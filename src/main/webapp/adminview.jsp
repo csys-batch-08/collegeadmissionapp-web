@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,14 +26,14 @@
 <button type="submit">Show Applicants</button>
 </form>
 
-<h2 align="center">  Courses Details </h2>
+<h2> Insert Courses Details </h2>
 <a href="InsertCourses.jsp"> Insert </a>
 
-<h2 align="center"> Edit Courses </h2>
+<h2> Edit Courses </h2>
 <a href="UpdateCourses.jsp"> Edit </a>
 
 <form action="DeleteCoursesServlet" method="post">
-<h2>Delete Courses</h2>
+<h2> Delete Courses</h2>
 <ul>
 <li>
 <label for="courseId">Course Id</label>

@@ -171,24 +171,6 @@ public class ApplicationDetails {
 		this.nationality = nationality;
 
 	}
-
-	public ApplicationDetails(String address, String city,
-			int pincode, String userState, int applicationId) {
-		// TODO Auto-generated constructor stub
-		
-		this.address = address;
-		this.city = city;
-		this.pincode = pincode;
-		this.userState = userState;
-		this.applicationId = applicationId;
-
-	}
-	
-	public ApplicationDetails(String studentName2, String fatherName2, int sslcMark2, int hscMark2, String address2,
-			String city2, int pincode2, String userState2, String nationality2, int applicationId2) {
-		// TODO Auto-generated constructor stub
-	}
-	
 	
 }
     

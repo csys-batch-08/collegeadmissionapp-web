@@ -18,12 +18,13 @@ public void applicationStatus(ApplicationStatus appStatus) throws ClassNotFoundE
 		String query = " insert into application_status(user_id,application_id,course_id,payment_status,application_status)values(?,?,?,?,?)";
 		
 		PreparedStatement stmt= con.prepareStatement(query);
-
+		ApplicationDaoImpl appDao=new ApplicationDaoImpl();
 		stmt.setInt(1, appStatus.getUserId());
 		System.out.println(appStatus.getUserId());
-		//int appID=applicationdetailsdao.findAppID(appStatus.getUserId());
-		//stmt.setInt(2, appID);
-		//System.out.println(appID);
+		int appID = appDao.findAppId(appStatus.getUserId());
+		
+		stmt.setInt(2, appID);
+		System.out.println(appID);
 		stmt.setInt(3, appStatus.getCourseId());
 		System.out.println(appStatus.getCourseId());
 		stmt.setString(4, appStatus.getPaymentStatus());

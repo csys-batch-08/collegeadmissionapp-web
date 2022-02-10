@@ -27,7 +27,7 @@ public class CoursesDaoImpl {
 		pstmt.setInt(5, courseDetails.getTuitionFees());
 			
 			int result=pstmt.executeUpdate();
-			System.out.println("Course Selected Successfully");
+			//System.out.println("Course Selected Successfully");
 			pstmt.close();
 			con.close();
 	    }

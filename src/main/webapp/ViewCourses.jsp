@@ -10,6 +10,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>View</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
@@ -19,7 +21,7 @@ List<CourseDetails> courseList = new ArrayList<CourseDetails>();
 courseList=showCourses.showAllCourses();
 %>		
 
-<table>			
+<table class="table table-striped">			
 <thead>
 <tr>	
 <th >Course Id</th>
@@ -41,7 +43,7 @@ for(CourseDetails list : courseList) {
 <td> <%=list.getCourseName()%></td>	
 <td><%=list.getAdmissionFees() %></td>	
 <td><%=list.getTuitionFees()%></td>	
-<td><a href="InsertApplicationStatusServlet?courseid=<%=list.getCourseId()%>">Apply</a></td>
+<td><a href="insertcarddetails.jsp?courseid=<%=list.getCourseId()%>">Apply</a></td>
 </tr>
 <%
 }

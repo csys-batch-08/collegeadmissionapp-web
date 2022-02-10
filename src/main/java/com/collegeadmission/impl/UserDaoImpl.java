@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -22,14 +21,15 @@ import com.collegeadmission.model.UserDetails;
 		{
 			
 			Connection con= ConnectionUtil.getDBConnect();
-			String query = "insert into user_details(User_Name,Email,Mobile_Number,User_Password) values(?,?,?,?)";
+			String query = "insert into user_details(Name,User_Name,Email,Mobile_Number,User_Password) values(?,?,?,?,?)";
 			
 			PreparedStatement pstmt= con.prepareStatement(query);
 			
-			pstmt.setString(1,str.getUserName());
-			pstmt.setString(2,str.getEmail());
-			pstmt.setLong(3,str.getMobileNumber());
-			pstmt.setString(4,str.getUserPassword());
+			pstmt.setString(1,str.getName());
+			pstmt.setString(2,str.getUserName());
+			pstmt.setString(3,str.getEmail());
+			pstmt.setLong(4,str.getMobileNumber());
+			pstmt.setString(5,str.getUserPassword());
 			
 			pstmt.executeUpdate();
 			System.out.println("Register User successfully");
@@ -44,7 +44,7 @@ import com.collegeadmission.model.UserDetails;
 			return rs;
 		}
 		
-		public boolean login(String emailId, String Password ) throws ClassNotFoundException, SQLException {
+		public UserDetails login(String emailId, String Password ) throws ClassNotFoundException, SQLException {
 			
 		    
 		    Connection con = ConnectionUtil.getDBConnect();
@@ -53,21 +53,19 @@ import com.collegeadmission.model.UserDetails;
 				
 		    PreparedStatement stmt = con.prepareStatement(query);
 		    
-		    System.out.println("Registered ");
+		    System.out.println("Registered");
 				
 		    stmt.setString(1, emailId);
 			stmt.setString(2, Password);
 				
-			int i = stmt.executeUpdate();
-				
-	if(i>0)
-	{
-				return true;
-
-				
-				}else {
-						return false;
-				}
+			ResultSet rs = stmt.executeQuery();
+			UserDetails userDetails=null;
+	if(rs.next()) {
+		 userDetails=new UserDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getLong(5),rs.getString(6));
+			return userDetails;
+	}
+	
+	return userDetails;
 	}
 		
 				
@@ -92,7 +90,7 @@ import com.collegeadmission.model.UserDetails;
 				while(rs.next())
 				{
 					System.out.println(rs.getString(2));
-					UserDetails userdetails =new UserDetails(rs.getInt(1),rs.getString(2),rs.getString(3),(long)rs.getLong(4),rs.getString(5));
+					UserDetails userdetails =new UserDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getLong(5),rs.getString(6));
 					userList.add(userdetails);
 				}
 			} catch (SQLException e) {
@@ -103,9 +101,3 @@ import com.collegeadmission.model.UserDetails;
 	    }
 
 	}
-		
-		
-
-
-
-	
