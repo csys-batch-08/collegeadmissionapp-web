@@ -27,7 +27,7 @@ public class ApplicationDaoImpl {
 		pstmt.setString(3, applicationdetails.getFatherName());
 		System.out.println(applicationdetails.getDateofBirth());
 		pstmt.setDate(4, new java.sql.Date(applicationdetails.getDateofBirth().getTime()));
-		pstmt.setInt(5, (int) applicationdetails.getAadharNumber());
+		pstmt.setLong(5, applicationdetails.getAadharNumber());
 		pstmt.setInt(6, applicationdetails.getSslcMark());
 		pstmt.setInt(7, applicationdetails.getHscMark());
 		pstmt.setString(8, applicationdetails.getAddress());
@@ -92,13 +92,15 @@ public class ApplicationDaoImpl {
 
 	}
 
-	public int findAppId(int userID) {
-		String query = "select appId from application_status where user_id=" + userID;
+	public int findAppId(ApplicationDetails application) {
+		String query = "select application_id from application_details where student_name=? and father_name=?";
 		int result = 0;
 
 		try {
 			Connection con = ConnectionUtil.getDBConnect();
 			PreparedStatement preStmt = con.prepareStatement(query);
+			preStmt.setString(1, application.getStudentName());
+			preStmt.setString(2, application.getFatherName());
 			ResultSet rs = preStmt.executeQuery();
 			if (rs.next()) {
 				result = rs.getInt(1);

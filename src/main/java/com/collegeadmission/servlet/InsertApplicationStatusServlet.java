@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.collegeadmission.impl.ApplicationDaoImpl;
 import com.collegeadmission.impl.ApplicationStatusImpl;
 import com.collegeadmission.model.ApplicationDetails;
 import com.collegeadmission.model.ApplicationStatus;
@@ -45,12 +46,15 @@ public class InsertApplicationStatusServlet extends HttpServlet {
 //			ApplicationStatus obj = new ApplicationStatus(StatusId,UserId,ApplicationId,CourseId,PaymentStatus,ApplicationStatus);
 			HttpSession session=request.getSession();
 			ApplicationDetails  appObj=(ApplicationDetails)session.getAttribute("application");
-			int courseid=Integer.parseInt(request.getParameter("courseid"));
+			int courseid=(int)session.getAttribute("courseid");
 			ApplicationStatusImpl ad = new ApplicationStatusImpl();
-			ApplicationStatus appStatus=new ApplicationStatus( appObj.getUserId(), appObj.getApplicationId(), courseid, "pending", "Applied");
+			ApplicationDaoImpl appDao=new ApplicationDaoImpl();
+			int appId=appDao.findAppId(appObj);
+			ApplicationStatus appStatus=new ApplicationStatus( appObj.getUserId(),appId, courseid, "pending", "Applied");
 			ad.applicationStatus(appStatus);
-			
-			response.getWriter().print("Register Successful");
+			session.setAttribute("ApplicationStatus", appStatus);
+			session.setAttribute("appStatusList", ad.showUserAppStatus(appObj.getUserId()));
+			response.sendRedirect("InsertApplicationStatus.jsp");
 			
 				
 			} 

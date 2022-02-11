@@ -1,3 +1,5 @@
+<%@page import="com.collegeadmission.model.ApplicationStatus"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,16 +11,32 @@
 </head>
 <body>
 
-<form action = "InsertApplicationStatusServlet" method="post">
+<form action = "" method="post">
 
 <h1>Application Status Details</h1>
 
-<input type ="number" name = "statusId" placeholder="Status Id" required><br><br>
-<input type ="number" name = "userId" placeholder="User Id" required><br><br>
-<input type ="number" name = "applicationId" placeholder ="Application Id" required><br><br>
-<input type="number" name = "courseId" value=<%=request.getAttribute("courseid") %> placeholder="Course Id" required><br><br>
-<input type ="text" name = "paymentStatus" placeholder = "Payment Status" required ><br><br>
-<input type ="text" name = "applicationStatus" placeholder = "Application Status" required ><br><br>
+<table>
+<tr>
+<th>Course id</th>
+<th>Payment Status</th>
+<th>Application Status</th>
+</tr>
+<% List<ApplicationStatus> appStatusList=(List<ApplicationStatus>)session.getAttribute("appStatusList");
+for(ApplicationStatus appStatus:appStatusList)
+	{%>
+	<tr>
+	<td>
+	<%=appStatus.getCourseId() %>
+	</td>
+	<td>
+	<%=appStatus.getPaymentStatus() %>
+	</td>
+	<td>
+	<%=appStatus.getApplicationStatus() %>
+	</td>
+	</tr>
+	<%} %>
+</table>
 
 <button type="submit">Submit</button><br><br>
 </form>

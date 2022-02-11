@@ -16,7 +16,7 @@
 <body>
 
 <%
-CoursesDaoImpl showCourses = new   CoursesDaoImpl();
+CoursesDaoImpl showCourses = new CoursesDaoImpl();
 List<CourseDetails> courseList = new ArrayList<CourseDetails>();
 courseList=showCourses.showAllCourses();
 %>		

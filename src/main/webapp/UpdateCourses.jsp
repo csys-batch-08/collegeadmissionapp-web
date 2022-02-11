@@ -4,33 +4,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Update Courses</title>
 </head>
 <body>
 
-<form action="UpdateApplication" method= "post">
-<label>Enter the- student name</label>
-<input type="text" name="studName" required>
-<label>Enter the Father Name</label>
-<input type="text" name="fatName" required>
-<label>Enter the sslc mark </label>
-<input type="text" name="sslcMark" required>
-<label>Enter the hsc Mark</label>
-<input type="text" name="hscMark" required>
-<label>Enter the address</label>
-<input type="text" name="addrss" required>
-<label>Enter the city</label>
-<input type="text" name="city" required>
-<label>Enter the pincode </label>
-<input type="text" name="pincode" required>
-<label>Enter the state</label>
-<input type="text" name="State" required>
-<label>Enter the nationality</label>
-<input type="text" name="nationality" required>
-<label>Enter the application id</label>
-<input type="text" name="applicationId" required>
+<h2> Update Courses </h2>
 
+<form action="UpdateCoursesServlet" method= "post">
+<label>Enter the admission fees</label>
+<input type="number" name="admissionFees" required> <br> <br>
 
+<label>Enter the tuition fees</label>
+<input type="number" name="tuitionFees" required> <br> <br>
+
+<label>Enter the course id </label>
+<input type="number" name="courseId" required> <br> <br>
 
 <button type="submit" >submit</button>
 </form>

@@ -32,20 +32,26 @@ form {
 <body>
 <form action = "InsertApplicationServlet" method="post">
 <h1>Application Details</h1>
-<input type ="number" name = "userid" placeholder="User Id" required><br><br>
+
 <input type ="text" name = "studentname" placeholder = "Student Name" pattern = "[A-Za-z.,]{3,30}"  required ><br><br>
 <input type ="text" name = "fathername" placeholder ="Father Name"  pattern = "[A-Za-z., ]{3,30}" required><br><br>
-<input type ="date" name = "dateofbirth" placeholder="DateofBirth" required><br><br>
-<input type ="number" name = "aadharnumber" placeholder="Aadhar Number" required><br><br>
-<input type ="number" name = "sslcMark" placeholder ="Sslc Mark" required><br><br>
-<input type="number" name = "hscMark" placeholder="Hsc Mark" required><br><br>
+<input type ="date" name = "dateofbirth" placeholder="DateofBirth" pattern="" required><br><br>
+<input type ="number" name = "aadharnumber" placeholder="Aadhar Number" pattern="[0-9] {12}" required><br><br>
+<input type ="number" name = "sslcMark" placeholder ="Sslc Mark" pattern="[0-4] {1} [0-9]{2}" required>
+<input type ="file" name = "sslcMarkimage" placeholder ="Sslc Mark" pattern="[0-4] {1} [0-9]{2}" required>
+<br><br>
+<input type="number" name = "hscMark" placeholder="Hsc Mark" pattern="[0-1] {2}[0-9]{2}"required>
+<input type ="file" name = "sslcMarkimage" placeholder ="Sslc Mark" pattern="[0-4] {1} [0-9]{2}" required>
+<br><br>
 <input type ="text" name = "address" placeholder = "Address" required ><br><br>
-<input type ="text" name = "city" placeholder = "City" required ><br><br>
-<input type ="number" name = "pincode" placeholder="Pincode" required><br><br>
-<input type ="text" name = "state" placeholder = "State" required ><br><br>
+<input type ="text" name = "city" placeholder = "City" pattern="[A-Za-z,] {3,40}" required ><br><br>
+<input type ="number" name = "pincode" placeholder="Pincode" pattern = "[0-9] {6}" required><br><br>
+<input type ="text" name = "userstate" placeholder = "State" required ><br><br>
 <input type ="text" name = "nationality" placeholder = "Nationality" required ><br><br>
 
-<button type="submit">Submit</button><br><br>
+<button type="submit">Submit</button>
+<button type="reset">Reset</button><br><br>
+<br><br>
 </form>
 </body>
 </html>

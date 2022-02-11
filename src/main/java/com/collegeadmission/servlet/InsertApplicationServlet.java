@@ -73,7 +73,7 @@ public class InsertApplicationServlet extends HttpServlet {
 			String Address = request.getParameter("address");
 			String City = request.getParameter("city");
 			int Pincode = Integer.parseInt(request.getParameter("pincode"));
-			String UserState = request.getParameter("state");
+			String UserState = request.getParameter("userstate");
 			String Nationality = request.getParameter("nationality");
 
 			Date dt = null;

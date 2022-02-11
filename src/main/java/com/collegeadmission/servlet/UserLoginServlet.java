@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.collegeadmission.impl.AdminDaoImpl;
 import com.collegeadmission.impl.UserDaoImpl;
+import com.collegeadmission.model.Admin;
 import com.collegeadmission.model.UserDetails;
 
 /**
@@ -42,8 +44,23 @@ public class UserLoginServlet extends HttpServlet {
 		String Password = request.getParameter("password");
 		
 		UserDaoImpl user =new UserDaoImpl();
-		
+		AdminDaoImpl adminDao = new AdminDaoImpl();
 		try {
+			
+			if (emailId.endsWith("@admin.com")) {
+
+
+				boolean flag = adminDao.loginAdmin(emailId, Password);
+				if (flag) {
+					response.sendRedirect("AdminViews.jsp");
+				} else {
+					request.getRequestDispatcher("UserLogin.jsp").forward(request, response);
+
+				}
+			}
+
+			else {
+			
 			UserDetails userDetails = user.login(emailId, Password);
 			System.out.println(userDetails);
 			if(userDetails!=null)
@@ -59,7 +76,7 @@ public class UserLoginServlet extends HttpServlet {
 				response.getWriter().print("Login Unsuceessful");
 				
 			}
-		} 
+		} }
 		
 		catch (Exception e) {
 			

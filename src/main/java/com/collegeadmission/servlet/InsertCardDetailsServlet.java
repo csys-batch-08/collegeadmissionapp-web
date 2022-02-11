@@ -53,8 +53,8 @@ public class InsertCardDetailsServlet extends HttpServlet {
         CardDetailsDaoImpl cardDao=new CardDetailsDaoImpl();
         try {
 			cardDao.insertCardDetails(card);
-			request.setAttribute("courseid",courseId);
-			RequestDispatcher rd = request.getRequestDispatcher("InsertApplicationStatus.jsp");
+			session.setAttribute("courseid",courseId);
+			RequestDispatcher rd = request.getRequestDispatcher("InsertApplicationStatusServlet");
 			rd.forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

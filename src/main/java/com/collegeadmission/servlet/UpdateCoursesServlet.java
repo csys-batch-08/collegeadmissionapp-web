@@ -50,7 +50,7 @@ public class UpdateCoursesServlet extends HttpServlet {
 			CoursesDaoImpl obj =new CoursesDaoImpl();
 			
 				obj.updateCourses(ad);
-				response.sendRedirect("UserView.jsp");
+				response.sendRedirect("AdminViews.jsp");
 						
 			} catch (Exception e) {
 				

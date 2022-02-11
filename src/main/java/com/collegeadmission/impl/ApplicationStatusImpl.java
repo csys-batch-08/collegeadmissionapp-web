@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.collegeadmission.connection.ConnectionUtil;
 import com.collegeadmission.model.ApplicationStatus;
+import com.collegeadmission.model.UserDetails;
 
 public class ApplicationStatusImpl {
 	
@@ -18,13 +19,13 @@ public void applicationStatus(ApplicationStatus appStatus) throws ClassNotFoundE
 		String query = " insert into application_status(user_id,application_id,course_id,payment_status,application_status)values(?,?,?,?,?)";
 		
 		PreparedStatement stmt= con.prepareStatement(query);
-		ApplicationDaoImpl appDao=new ApplicationDaoImpl();
+		//ApplicationDaoImpl appDao=new ApplicationDaoImpl();
 		stmt.setInt(1, appStatus.getUserId());
 		System.out.println(appStatus.getUserId());
-		int appID = appDao.findAppId(appStatus.getUserId());
+		//int appID = appDao.findAppId(appStatus.getUserId());
 		
-		stmt.setInt(2, appID);
-		System.out.println(appID);
+		stmt.setInt(2, appStatus.getApplicationId());
+		System.out.println(appStatus.getApplicationId());
 		stmt.setInt(3, appStatus.getCourseId());
 		System.out.println(appStatus.getCourseId());
 		stmt.setString(4, appStatus.getPaymentStatus());
@@ -66,13 +67,43 @@ public List<ApplicationStatus> showAppStatus() throws ClassNotFoundException, SQ
 	
 	 while(rs.next())
 	 {
-		 //appStatus= new ApplicationStatus(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
+		 appStatus= new ApplicationStatus(rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
 	
-		 //show.add(appStatus);
+		 show.add(appStatus);
 	
 	  }
 
 	 return show;
+}
+
+
+public  List<ApplicationStatus> showUserAppStatus(int userId) {
+	
+	 String query ="select * from application_status where user_id=?";
+	 ApplicationStatus appStatus;
+	 List<ApplicationStatus> show= new ArrayList<ApplicationStatus>();
+	 try
+	 {
+	 Connection con=ConnectionUtil.getDBConnect();
+	 PreparedStatement ps =con.prepareStatement(query);
+	 ps.setInt(1, userId);
+	 ResultSet rs=ps.executeQuery();
+	 
+	
+	 while(rs.next())
+	 {
+		 appStatus= new ApplicationStatus(rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
+	
+		 show.add(appStatus);
+	
+	  }
+	 }
+	 catch(Exception e)
+	 {
+		e.printStackTrace(); 
+	 }
+	 return show;
+	
 }
 
 }

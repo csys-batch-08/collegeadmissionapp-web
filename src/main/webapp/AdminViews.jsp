@@ -33,16 +33,6 @@
 <h2> Edit Courses </h2>
 <a href="UpdateCourses.jsp"> Edit </a>
 
-<form action="DeleteCoursesServlet" method="post">
-<h2> Delete Courses</h2>
-<ul>
-<li>
-<label for="courseId">Course Id</label>
-<input type="number" name="courseId"  required></li>
-</ul>
-<button type="submit">Delete Courses</button>
-</form>
-
 
 </body>
 </html>
