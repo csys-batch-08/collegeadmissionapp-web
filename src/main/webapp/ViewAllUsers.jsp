@@ -1,27 +1,28 @@
 <%@page import="com.collegeadmission.model.UserDetails"%>
 <%@page import="java.util.List"%>
 <%@page import="com.collegeadmission.impl.UserDaoImpl"%>
-
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>View All Users</title>
 </head>
 <body>
 
-	<%
-	UserDaoImpl obj1 = new UserDaoImpl();
-	List<UserDetails> userList = obj1.showAllUsers();
-	%>
-	<div id="allusers">
-		<table>
+
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>User Id</th>
+					<th> Name </th>
 					<th>User Name</th>
 					<th>MailId</th>
 					<th>Mobile Number</th>
@@ -30,23 +31,22 @@
 			</thead>
 
 			<tbody>
-				<%
-				for (UserDetails users : userList) {
-				%>
+			
+				<c:forEach items="${userList}" var="users">
 				<tr>
-					<td><%=users.getUserId()%></td>
-					<td><%=users.getUserName()%></td>
-					<td><%=users.getEmail()%></td>
-					<td><%=users.getMobileNumber()%></td>
-					<td><%=users.getUserPassword()%></td>
+					<td>${users.userId}</td>
+					<td>${users.name}</td>
+					<td>${users.userName}</td>
+					<td>${users.email}</td>
+					<td>${users.mobileNumber}</td>
+					<td>${users.userPassword}</td>
 
 				</tr>
-				<%
-				}
-				%>
+				</c:forEach>
+		
 			</tbody>
 		</table>
-	</div>
+	
 
 </body>
 </html>

@@ -64,7 +64,7 @@ public class ApplicationDaoImpl {
 	public List<ApplicationDetails> showAllApplications() throws ClassNotFoundException, SQLException {
 		List<ApplicationDetails> applicationList = new ArrayList<ApplicationDetails>();
 		String showapplicationsquery = "select * from application_details";
-		Connection con = ConnectionUtil.getDBConnect();
+		Connection con = null;
 		PreparedStatement ps;
 		try {
 			con = ConnectionUtil.getDBConnect();

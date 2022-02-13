@@ -5,51 +5,65 @@ import java.util.Objects;
 public class UserDetails {
 
 	private int userId;
-	private String Name;
+	private String name;
 	private String userName;
 	private String email;
 	private long mobileNumber;
 	private String userPassword;
+
 	public int getUserId() {
 		return userId;
 	}
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
 	public String getName() {
-		return Name;
+		return name;
 	}
+
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
+
 	public String getUserName() {
 		return userName;
 	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public long getMobileNumber() {
 		return mobileNumber;
 	}
+
 	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
+
 	public String getUserPassword() {
 		return userPassword;
 	}
+
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(Name, email, mobileNumber, userId, userName, userPassword);
+		return Objects.hash(name, email, mobileNumber, userId, userName, userPassword);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -59,39 +73,39 @@ public class UserDetails {
 		if (getClass() != obj.getClass())
 			return false;
 		UserDetails other = (UserDetails) obj;
-		return Objects.equals(Name, other.Name) && Objects.equals(email, other.email)
+		return Objects.equals(name, other.name) && Objects.equals(email, other.email)
 				&& mobileNumber == other.mobileNumber && userId == other.userId
 				&& Objects.equals(userName, other.userName) && Objects.equals(userPassword, other.userPassword);
 	}
+
 	@Override
 	public String toString() {
-		return "UserDetails [userId=" + userId + ", Name=" + Name + ", userName=" + userName + ", email=" + email
+		return "UserDetails [userId=" + userId + ", Name=" + name + ", userName=" + userName + ", email=" + email
 				+ ", mobileNumber=" + mobileNumber + ", userPassword=" + userPassword + "]";
 	}
+
 	public UserDetails(String name, String userName, String email, long mobileNumber, String userPassword) {
 		super();
-		Name = name;
+		this.name = name;
 		this.userName = userName;
 		this.email = email;
 		this.mobileNumber = mobileNumber;
 		this.userPassword = userPassword;
 	}
+
 	public UserDetails(int userId, String name, String userName, String email, long mobileNumber, String userPassword) {
 		super();
 		this.userId = userId;
-		Name = name;
+		this.name = name;
 		this.userName = userName;
 		this.email = email;
 		this.mobileNumber = mobileNumber;
 		this.userPassword = userPassword;
 	}
+
 	public UserDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-
-
 
 }

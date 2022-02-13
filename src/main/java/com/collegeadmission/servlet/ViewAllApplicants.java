@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.collegeadmission.impl.CoursesDaoImpl;
-import com.collegeadmission.model.*;
+import com.collegeadmission.impl.ApplicationDaoImpl;
+import com.collegeadmission.model.ApplicationDetails;
 
 /**
- * Servlet implementation class ViewAllCoursesServlet
+ * Servlet implementation class ViewAllApplicants
  */
-@WebServlet("/ViewCourses")
-public class ViewAllCoursesServlet extends HttpServlet {
+@WebServlet("/ViewAllApplicants")
+public class ViewAllApplicants extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ViewAllCoursesServlet() {
+	public ViewAllApplicants() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,21 +34,22 @@ public class ViewAllCoursesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CoursesDaoImpl showCourses = new CoursesDaoImpl();
-		List<CourseDetails> courseList = new ArrayList<CourseDetails>();
+
+		ApplicationDaoImpl showApplications = new ApplicationDaoImpl();
+		List<ApplicationDetails> applicationList = new ArrayList<ApplicationDetails>();
 		try {
-			courseList = showCourses.showAllCourses();
-			request.setAttribute("courseList", courseList);
-			System.out.println(courseList);
-			RequestDispatcher rd = request.getRequestDispatcher("ViewCourses.jsp");
+			applicationList = showApplications.showAllApplications();
+			request.setAttribute("applicationList", applicationList);
+			System.out.println(applicationList);
+			RequestDispatcher rd = request.getRequestDispatcher("ViewAllApplicants.jsp");
 			rd.forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 	/**
@@ -57,20 +58,19 @@ public class ViewAllCoursesServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
-		CoursesDaoImpl showCourses = new CoursesDaoImpl();
-		List<CourseDetails> courseList = new ArrayList<CourseDetails>();
+		ApplicationDaoImpl showApplications = new ApplicationDaoImpl();
+		List<ApplicationDetails> applicationList = new ArrayList<ApplicationDetails>();
 		try {
-			courseList = showCourses.showAllCourses();
-			request.setAttribute("courseList", courseList);
-			System.out.println(courseList);
-			RequestDispatcher rd = request.getRequestDispatcher("ViewCourses.jsp");
+			applicationList = showApplications.showAllApplications();
+			request.setAttribute("applicationList", applicationList);
+			System.out.println(applicationList);
+			RequestDispatcher rd = request.getRequestDispatcher("ViewAllApplicants.jsp");
 			rd.forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
+
 }

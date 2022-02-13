@@ -3,8 +3,6 @@ package com.collegeadmission.servlet;
 
 import java.io.IOException;
 
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,32 +21,32 @@ import com.collegeadmission.model.UserDetails;
 @WebServlet("/UserLoginServlet")
 public class UserLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//doPost(request, response);
+		// doPost(request, response);
 	}
 
-
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
-		HttpSession session=request.getSession();
+
+		HttpSession session = request.getSession();
 		String emailId = request.getParameter("email");
 		String Password = request.getParameter("password");
-		
-		UserDaoImpl user =new UserDaoImpl();
+
+		UserDaoImpl user = new UserDaoImpl();
 		AdminDaoImpl adminDao = new AdminDaoImpl();
 		try {
-			
-			if (emailId.endsWith("@admin.com")) {
 
+			if (emailId.endsWith("@admin.com")) {
 
 				boolean flag = adminDao.loginAdmin(emailId, Password);
 				if (flag) {
@@ -60,30 +58,27 @@ public class UserLoginServlet extends HttpServlet {
 			}
 
 			else {
-			
-			UserDetails userDetails = user.login(emailId, Password);
-			System.out.println(userDetails);
-			if(userDetails!=null)
-			{
-				session.setAttribute("UserId", userDetails.getUserId());
-				session.setAttribute( "userDetails",userDetails);
-				response.getWriter().print("Login Suceessful");
-				response.sendRedirect("UserView.jsp");
+
+				UserDetails userDetails = user.login(emailId, Password);
+				System.out.println(userDetails);
+				if (userDetails != null) {
+					session.setAttribute("UserId", userDetails.getUserId());
+					session.setAttribute("userDetails", userDetails);
+					response.getWriter().print("Login Suceessful");
+					response.sendRedirect("UserView.jsp");
+				} else {
+					// response.sendRedirect("UserLoginError.jsp");
+					response.getWriter().print("Login Unsuceessful");
+
+				}
 			}
-			else
-			{
-				//response.sendRedirect("UserLoginError.jsp");
-				response.getWriter().print("Login Unsuceessful");
-				
-			}
-		} }
-		
-		catch (Exception e) {
-			
-			e.printStackTrace();
-			
 		}
-		
-		
+
+		catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
 	}
 }

@@ -11,7 +11,7 @@ import com.collegeadmission.model.Admin;
 import com.collegeadmission.model.UserDetails;
 
 public class AdminDaoImpl {
-	
+
 //	public void adminDetails(Admin admin) throws SQLException, ClassNotFoundException {
 //	
 //	String adminQuery = "insert into admin_details(Admin_Id,Admin_Name,Admin_Email,Admin_Password) values(?,?,?)";
@@ -32,33 +32,35 @@ public class AdminDaoImpl {
 //		pstmt.close();
 //		con.close();
 //    }
-	
-	public Boolean loginAdmin(String Email,String AdminPassword) throws ClassNotFoundException, SQLException
-	{
-		
-		
-		 Connection con = ConnectionUtil.getDBConnect();
-			
-		 String loginQuery="select * from admin_details where Email = ? and  Admin_Password=? " ;
-				
-		    PreparedStatement stmt = con.prepareStatement(loginQuery);
-		    
-		    System.out.println("Registered ");
-				
-		    stmt.setString(1, Email);
+
+	public Boolean loginAdmin(String Email, String AdminPassword) throws ClassNotFoundException, SQLException {
+
+		Connection con = ConnectionUtil.getDBConnect();
+		PreparedStatement stmt = null;
+		try {
+			String loginQuery = "select * from admin_details where Email = ? and  Admin_Password=? ";
+
+			stmt = con.prepareStatement(loginQuery);
+
+			System.out.println("Registered ");
+
+			stmt.setString(1, Email);
 			stmt.setString(2, AdminPassword);
-				
+
 			int i = stmt.executeUpdate();
-				
-if(i>0)
-{
+
+			if (i > 0) {
 				return true;
 
-				//System.out.println("welcome "+rs.getString("first_name") );
-				}else {
-						return false;
-				}
+				// System.out.println("welcome "+rs.getString("first_name") );
+			}
+		} catch (SQLException e) {
+			e.getMessage();
+		} finally {
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+		return false;
 	}
-	}
-
-
+}

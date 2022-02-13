@@ -13,28 +13,29 @@ import com.collegeadmission.impl.ApplicationStatusImpl;
 import com.collegeadmission.model.ApplicationDetails;
 import com.collegeadmission.model.ApplicationStatus;
 
-
 /**
  * Servlet implementation class InsertApplicationStatusServlet
  */
 @WebServlet("/InsertApplicationStatusServlet")
 public class InsertApplicationStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InsertApplicationStatusServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public InsertApplicationStatusServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		try {
 //			int StatusId = Integer.parseInt(request.getParameter("statusId"));
 //			int UserId= Integer.parseInt(request.getParameter("userId"));
@@ -44,39 +45,35 @@ public class InsertApplicationStatusServlet extends HttpServlet {
 //			String ApplicationStatus= request.getParameter("applicationStatus");
 //						
 //			ApplicationStatus obj = new ApplicationStatus(StatusId,UserId,ApplicationId,CourseId,PaymentStatus,ApplicationStatus);
-			HttpSession session=request.getSession();
-			ApplicationDetails  appObj=(ApplicationDetails)session.getAttribute("application");
-			int courseid=(int)session.getAttribute("courseid");
+			HttpSession session = request.getSession();
+			ApplicationDetails appObj = (ApplicationDetails) session.getAttribute("application");
+			int courseid = (int) session.getAttribute("courseid");
 			ApplicationStatusImpl ad = new ApplicationStatusImpl();
-			ApplicationDaoImpl appDao=new ApplicationDaoImpl();
-			int appId=appDao.findAppId(appObj);
-			ApplicationStatus appStatus=new ApplicationStatus( appObj.getUserId(),appId, courseid, "pending", "Applied");
+			ApplicationDaoImpl appDao = new ApplicationDaoImpl();
+			int appId = appDao.findAppId(appObj);
+			ApplicationStatus appStatus = new ApplicationStatus(appObj.getUserId(), appId, courseid, "pending",
+					"Applied");
 			ad.applicationStatus(appStatus);
 			session.setAttribute("ApplicationStatus", appStatus);
 			session.setAttribute("appStatusList", ad.showUserAppStatus(appObj.getUserId()));
 			response.sendRedirect("InsertApplicationStatus.jsp");
-			
-				
-			} 
-			catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println(e);
-			} 
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e);
+		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
-		
-			
-			
-
-		}
 
 	}
 
+}

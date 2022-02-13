@@ -60,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
 		long mobileno = Long.parseLong(request.getParameter("mobileno"));
 		String password = request.getParameter("password");
 
-		UserDetails obj = new UserDetails(name,username, email, mobileno, password);
+		UserDetails obj = new UserDetails(name, username, email, mobileno, password);
 		UserDaoImpl ins = new UserDaoImpl();
 		try {
 

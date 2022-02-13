@@ -12,98 +12,89 @@ import com.collegeadmission.model.ApplicationStatus;
 import com.collegeadmission.model.UserDetails;
 
 public class ApplicationStatusImpl {
-	
-public void applicationStatus(ApplicationStatus appStatus) throws ClassNotFoundException, SQLException {
-		
-		Connection con= ConnectionUtil.getDBConnect();
+
+	public void applicationStatus(ApplicationStatus appStatus) throws ClassNotFoundException, SQLException {
+
+		Connection con = ConnectionUtil.getDBConnect();
 		String query = " insert into application_status(user_id,application_id,course_id,payment_status,application_status)values(?,?,?,?,?)";
-		
-		PreparedStatement stmt= con.prepareStatement(query);
-		//ApplicationDaoImpl appDao=new ApplicationDaoImpl();
+
+		PreparedStatement stmt = con.prepareStatement(query);
+		// ApplicationDaoImpl appDao=new ApplicationDaoImpl();
 		stmt.setInt(1, appStatus.getUserId());
 		System.out.println(appStatus.getUserId());
-		//int appID = appDao.findAppId(appStatus.getUserId());
-		
+		// int appID = appDao.findAppId(appStatus.getUserId());
+
 		stmt.setInt(2, appStatus.getApplicationId());
 		System.out.println(appStatus.getApplicationId());
 		stmt.setInt(3, appStatus.getCourseId());
 		System.out.println(appStatus.getCourseId());
 		stmt.setString(4, appStatus.getPaymentStatus());
 		stmt.setString(5, appStatus.getApplicationStatus());
-		
+
 		stmt.executeUpdate();
 		System.out.println("Insert Applicant Status Successfully");
 	}
 
+	public void updateApplicationStatus(ApplicationStatus as1) throws ClassNotFoundException, SQLException {
 
-public void updateApplicationStatus(ApplicationStatus as1)throws ClassNotFoundException, SQLException {
-	
-	 Connection con=ConnectionUtil.getDBConnect();
-	
-	String update = "update job_status set payment_status=?, application_status=? where status_id=?";
-	System.out.println(update);
-	PreparedStatement stmt = con.prepareStatement(update);
-	 	
-	stmt.setString(1, as1.getPaymentStatus());
-	stmt.setString(2, as1.getApplicationStatus());
-	//-stmt.setInt(3, as1.getStatusId());
-	
+		Connection con = ConnectionUtil.getDBConnect();
+
+		String update = "update application_status set payment_status=?, application_status=? where status_id=?";
+		System.out.println(update);
+		PreparedStatement stmt = con.prepareStatement(update);
+
+		stmt.setString(1, as1.getPaymentStatus());
+		stmt.setString(2, as1.getApplicationStatus());
+		stmt.setInt(3, as1.getStatusId());
+
 		System.out.println(stmt.executeUpdate() + " is updated !!");
-	 
-}
 
+	}
 
-public List<ApplicationStatus> showAppStatus() throws ClassNotFoundException, SQLException {
-	 
-	 
-	 String query ="select * from application_status";
-	 ApplicationStatus appStatus;
-	 List<ApplicationStatus> show= new ArrayList<ApplicationStatus>();
-	 Connection con=ConnectionUtil.getDBConnect();
-	 PreparedStatement ps =con.prepareStatement(query);
-	 
-	 ResultSet rs=ps.executeQuery();
-	 
-	
-	 while(rs.next())
-	 {
-		 appStatus= new ApplicationStatus(rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
-	
-		 show.add(appStatus);
-	
-	  }
+	public List<ApplicationStatus> showAppStatus() throws ClassNotFoundException, SQLException {
 
-	 return show;
-}
+		String query = "select * from application_status";
+		ApplicationStatus appStatus;
+		List<ApplicationStatus> show = new ArrayList<ApplicationStatus>();
+		Connection con = ConnectionUtil.getDBConnect();
+		PreparedStatement ps = con.prepareStatement(query);
 
+		ResultSet rs = ps.executeQuery();
 
-public  List<ApplicationStatus> showUserAppStatus(int userId) {
-	
-	 String query ="select * from application_status where user_id=?";
-	 ApplicationStatus appStatus;
-	 List<ApplicationStatus> show= new ArrayList<ApplicationStatus>();
-	 try
-	 {
-	 Connection con=ConnectionUtil.getDBConnect();
-	 PreparedStatement ps =con.prepareStatement(query);
-	 ps.setInt(1, userId);
-	 ResultSet rs=ps.executeQuery();
-	 
-	
-	 while(rs.next())
-	 {
-		 appStatus= new ApplicationStatus(rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
-	
-		 show.add(appStatus);
-	
-	  }
-	 }
-	 catch(Exception e)
-	 {
-		e.printStackTrace(); 
-	 }
-	 return show;
-	
-}
+		while (rs.next()) {
+			appStatus = new ApplicationStatus(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5),
+					rs.getString(6));
+
+			show.add(appStatus);
+
+		}
+
+		return show;
+	}
+
+	public List<ApplicationStatus> showUserAppStatus(int userId) {
+
+		String query = "select * from application_status where user_id=?";
+		ApplicationStatus appStatus;
+		List<ApplicationStatus> show = new ArrayList<ApplicationStatus>();
+		try {
+			Connection con = ConnectionUtil.getDBConnect();
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, userId);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				appStatus = new ApplicationStatus(rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5),
+						rs.getString(6));
+
+				show.add(appStatus);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return show;
+
+	}
 
 }

@@ -60,37 +60,35 @@ public class InsertApplicationServlet extends HttpServlet {
 			if (!userDetails.getName().equals(StudentName)) {
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("InsertApplication.jsp");
 				requestDispatcher.forward(request, response);
+			} else {
+
+				String FatherName = request.getParameter("fathername");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				long AadharNumber = Long.parseLong(request.getParameter("aadharnumber"));
+				int SslcMark = Integer.parseInt(request.getParameter("sslcMark"));
+				int HscMark = Integer.parseInt(request.getParameter("hscMark"));
+				String Address = request.getParameter("address");
+				String City = request.getParameter("city");
+				int Pincode = Integer.parseInt(request.getParameter("pincode"));
+				String UserState = request.getParameter("userstate");
+				String Nationality = request.getParameter("nationality");
+
+				Date dt = null;
+				dt = sdf.parse(request.getParameter("dateofbirth"));
+				System.out.println(dt);
+				ApplicationDetails obj = new ApplicationDetails(UserId, StudentName, FatherName, dt, AadharNumber,
+						SslcMark, HscMark, Address, City, Pincode, UserState, Nationality);
+				ApplicationDaoImpl ad = new ApplicationDaoImpl();
+				ad.insertApplication(obj);
+
+				session.setAttribute("application", obj);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("ViewCourses");
+				requestDispatcher.forward(request, response);
+
+				// response.getWriter().print("Register Successful");
+
 			}
-			else {
-				
-			
-
-			String FatherName = request.getParameter("fathername");
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			long AadharNumber = Long.parseLong(request.getParameter("aadharnumber"));
-			int SslcMark = Integer.parseInt(request.getParameter("sslcMark"));
-			int HscMark = Integer.parseInt(request.getParameter("hscMark"));
-			String Address = request.getParameter("address");
-			String City = request.getParameter("city");
-			int Pincode = Integer.parseInt(request.getParameter("pincode"));
-			String UserState = request.getParameter("userstate");
-			String Nationality = request.getParameter("nationality");
-
-			Date dt = null;
-			dt = sdf.parse(request.getParameter("dateofbirth"));
-			System.out.println(dt);
-			ApplicationDetails obj = new ApplicationDetails(UserId, StudentName, FatherName, dt, AadharNumber, SslcMark,
-					HscMark, Address, City, Pincode, UserState, Nationality);
-			ApplicationDaoImpl ad = new ApplicationDaoImpl();
-			ad.insertApplication(obj);
-
-			session.setAttribute("application", obj);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("ViewCourses.jsp");
-			requestDispatcher.forward(request, response);
-
-			//response.getWriter().print("Register Successful");
-
-			}				} catch (Exception e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println(e);

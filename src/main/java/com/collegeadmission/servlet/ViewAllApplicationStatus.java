@@ -1,27 +1,30 @@
 package com.collegeadmission.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.collegeadmission.impl.ApplicationStatusImpl;
 import com.collegeadmission.model.ApplicationStatus;
-//import com.collegeadmission.model.ApplicationStatus;
 
 /**
- * Servlet implementation class UpdateApplicationStatusServlet
+ * Servlet implementation class ViewAllApplicationStatus
  */
-@WebServlet("/UpdateApplicationStatusServlet")
-public class UpdateApplicationStatusServlet extends HttpServlet {
+@WebServlet("/ViewAllApplicationStatus")
+public class ViewAllApplicationStatus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UpdateApplicationStatusServlet() {
+	public ViewAllApplicationStatus() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,7 +36,16 @@ public class UpdateApplicationStatusServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ApplicationStatusImpl appstat = new ApplicationStatusImpl();
+		try {
+			List<ApplicationStatus> appstatus = appstat.showAppStatus();
+			HttpSession session = request.getSession();
+			session.setAttribute("applicationstatus", appstatus);
+			response.sendRedirect("ViewAllApplicationStatus.jsp");
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -43,22 +55,8 @@ public class UpdateApplicationStatusServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doGet(request, response);
 
-		try {
-			String PaymentStatus = request.getParameter("paymentStatus");
-			String ApplicationStatus = request.getParameter("applicationStatus");
-			int StatusId = Integer.parseInt(request.getParameter("statusId"));
-
-			ApplicationStatus ad = new ApplicationStatus(PaymentStatus, ApplicationStatus, StatusId);
-			ApplicationStatusImpl obj = new ApplicationStatusImpl();
-
-			obj.updateApplicationStatus(ad);
-			response.sendRedirect("AdminViews.jsp");
-
-		} catch (Exception e) {
-
-			System.out.println(e);
-		}
 	}
 
 }

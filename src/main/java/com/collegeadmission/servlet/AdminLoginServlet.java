@@ -19,61 +19,61 @@ import com.collegeadmission.model.*;
 @WebServlet("/AdminLoginServlet")
 public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AdminLoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AdminLoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String email = request.getParameter("email");
-		System.out.println("cnvccvc"+email);
+		System.out.println("cnvccvc" + email);
 		String Password = request.getParameter("adminpassword");
 		System.out.println("snvdfcgscdcghcdgdccd");
-	
+
 		AdminDaoImpl cpDao = new AdminDaoImpl();
-		
+
 		try {
 			Boolean Str = cpDao.loginAdmin(email, Password);
 
-			if(Str==true)
-			{
-				
+			if (Str == true) {
+
 				response.getWriter().print("Login Suceessful");
-				
-			    response.sendRedirect("AdminViews.jsp");
-			   			    
-			}
-			else
-			{
-				//response.sendRedirect("AdminLogin.jsp");
-				
+
+				response.sendRedirect("AdminViews.jsp");
+
+			} else {
+				// response.sendRedirect("AdminLogin.jsp");
+
 				response.getWriter().print("Login Unsuceessful");
 
 			}
-		} 
-		
-		catch (Exception e) {			
-			e.printStackTrace();
-			
 		}
-		
+
+		catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
 	}
 
 }
-

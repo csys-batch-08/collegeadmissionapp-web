@@ -19,17 +19,18 @@ import com.collegeadmission.model.ApplicationDetails;
 @WebServlet("/DeleteApplicationServlet")
 public class DeleteApplicationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteApplicationServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public DeleteApplicationServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -37,36 +38,36 @@ public class DeleteApplicationServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		HttpSession session1=request.getSession();
+		HttpSession session1 = request.getSession();
 		try {
 
-		//int applicationId=Integer.parseInt(request.getParameter("applicationId").toString());
-		int appid = Integer.parseInt(request.getParameter("applicationId"));
-		System.out.println(appid);
-		ApplicationDetails apid=new ApplicationDetails(appid);
-		ApplicationDaoImpl app=new ApplicationDaoImpl();
-		
+			// int
+			// applicationId=Integer.parseInt(request.getParameter("applicationId").toString());
+			int appid = Integer.parseInt(request.getParameter("applicationId"));
+			System.out.println(appid);
+			ApplicationDetails apid = new ApplicationDetails(appid);
+			ApplicationDaoImpl app = new ApplicationDaoImpl();
+
 			app.deleteApplication(appid);
-				HttpSession session=request.getSession();
-				session.setAttribute("deleteApplicationDetail","Application deleted successfully");
+			HttpSession session = request.getSession();
+			session.setAttribute("deleteApplicationDetail", "Application deleted successfully");
 //				response.sendRedirect("ShowApplications.jsp");
-				
-				response.getWriter().print("Deleted ");
-			
+
+			response.getWriter().print("Deleted ");
+
 		}
-			
-			catch (Exception e) {
-				// TODO Auto-generated catch block
-				System.out.println(e);
-				e.printStackTrace();
-			}
-		
-	}}
-				
 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			e.printStackTrace();
+		}
 
+	}
+}
