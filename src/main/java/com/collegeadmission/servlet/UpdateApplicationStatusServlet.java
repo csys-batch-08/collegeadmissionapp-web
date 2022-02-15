@@ -53,7 +53,7 @@ public class UpdateApplicationStatusServlet extends HttpServlet {
 			ApplicationStatusImpl obj = new ApplicationStatusImpl();
 
 			obj.updateApplicationStatus(ad);
-			response.sendRedirect("AdminViews.jsp");
+			response.sendRedirect("adminView.jsp");
 
 		} catch (Exception e) {
 

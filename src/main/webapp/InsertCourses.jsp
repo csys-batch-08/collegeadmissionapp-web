@@ -42,6 +42,12 @@ body {
 </style>
 </head>
 <body>
+
+	<ul>
+		<li><a href="adminView.jsp">Admin View</a></li>
+		<li style="float: right"><a href="login.jsp"><strong>Logout</strong></a></li>
+	</ul>
+
 	<div class="insertform">
 		<form action="InsertCoursesServlet" method="post">
 
@@ -49,18 +55,15 @@ body {
 
 			<input type="number" name="courseId" placeholder="Course ID" required><br>
 			<br> <input type="text" name="courseType"
-				placeholder="Course Type" required><br>
-			<br> <input type="text" name="courseName"
-				placeholder="Course Name" required><br>
+				placeholder="Course Type" required><br> <br> <input
+				type="text" name="courseName" placeholder="Course Name" required><br>
 			<br> <input type="number" name="admissionFees"
-				placeholder="Admission Fees" required><br>
-			<br> <input type="number" name="tuitionFees"
-				placeholder="Tuition Fees" required><br>
+				placeholder="Admission Fees" required><br> <br> <input
+				type="number" name="tuitionFees" placeholder="Tuition Fees" required><br>
 			<br>
 
 			<button type="submit">Submit</button>
-			<br>
-			<br>
+			<br> <br>
 		</form>
 	</div>
 

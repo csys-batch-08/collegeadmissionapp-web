@@ -16,7 +16,7 @@ public class ApplicationDaoImpl {
 
 	public void insertApplication(ApplicationDetails applicationdetails) throws ClassNotFoundException, SQLException {
 
-		String formQuery = "insert into application_details(User_Id,Student_Name,Father_Name,Date_of_Birth,Aadhar_Number,SSLC_Mark,HSC_Mark,Address,City,Pincode,User_State,Nationality) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String formQuery = "insert into application_details(user_id,Student_Name,Father_Name,Date_of_Birth,Aadhar_Number,SSLC_Mark,HSC_Mark,Address,City,Pincode,User_State,Nationality) values(?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		Connection con = ConnectionUtil.getDBConnect();
 
@@ -25,7 +25,7 @@ public class ApplicationDaoImpl {
 		pstmt.setInt(1, applicationdetails.getUserId());
 		pstmt.setString(2, applicationdetails.getStudentName());
 		pstmt.setString(3, applicationdetails.getFatherName());
-		System.out.println(applicationdetails.getDateofBirth());
+		//System.out.println(applicationdetails.getDateofBirth());
 		pstmt.setDate(4, new java.sql.Date(applicationdetails.getDateofBirth().getTime()));
 		pstmt.setLong(5, applicationdetails.getAadharNumber());
 		pstmt.setInt(6, applicationdetails.getSslcMark());

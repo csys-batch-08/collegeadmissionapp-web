@@ -3,9 +3,12 @@
 <html>
 <head>
 
-<title>Insert title here</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<title>User View</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
 body {
@@ -55,17 +58,29 @@ s
 
 <body>
 
-<ul>
- 
-  <li style="float:right"><a href="UserLogin.jsp">logout</a></li>
-</ul>
+	<ul>
+		<li><a href="register.jsp">Register</a></li>
+		<li><a href="login.jsp">Login</a></li>
+		<li><a href="insertApplication.jsp">InsertApplication</a></li>
+		<li><a href="viewCourses.jsp">View Courses</a></li>
+		<li><a href="insertCardDetails.jsp">Insert Card Details</a></li>
+		<li style="float: right"><a href="login.jsp">Logout</a></li>
+	</ul>
 
-<h2 align="center" style="padding-top:18% ">  Application Details : <a href="InsertApplication.jsp"><button type="button" class="btn btn-success">Apply</button></a></h2>
 
- 
-<h2 align="center"> View Courses :  <a href="ViewCourses"><button type="button" class="btn btn-success">view</button></a></h2> 
-  
-<br><br>
- 
+	<h2 align="center" style="padding-top: 18%">
+		Application Details : <a href="insertApplication.jsp"><button
+				type="button" class="btn btn-success">Apply</button></a>
+	</h2>
+
+
+	<h2 align="center">
+		View Courses : <a href="viewCourses.jsp"><button type="button"
+				class="btn btn-success">View</button></a>
+	</h2>
+
+	<br>
+	<br>
+
 </body>
 </html>

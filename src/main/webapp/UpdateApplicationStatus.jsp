@@ -43,16 +43,19 @@ body {
 </head>
 <body>
 
+	<ul>
+		<li><a href="adminView.jsp">Admin View</a></li>
+		<li style="float: right"><a href="login.jsp"><strong>Logout</strong></a></li>
+	</ul>
 
 	<div class="updateform">
 		<form action="UpdateApplicationStatusServlet" method="post">
 			<label>Enter the payment status</label> <input type="text"
-				id="paymentStatus" name="paymentStatus" required><br />
-			<br /> <label>Enter the application status</label> <input type="text"
-				id="applicationStatus" name="applicationStatus" required><br />
-			<br /> <label>Enter the status id </label> <input type="number"
-				id="statusId" name="statusId" required><br />
-			<br />
+				id="paymentStatus" name="paymentStatus" required><br> <br>
+			<label>Enter the application status</label> <input type="text"
+				id="applicationStatus" name="applicationStatus" required><br>
+			<br> <label>Enter the status id </label> <input type="number"
+				id="statusId" name="statusId" required><br> <br>
 			<button type="submit">submit</button>
 		</form>
 	</div>

@@ -17,22 +17,26 @@
 </head>
 <body>
 
+	<ul>
+		<li><a href="adminView.jsp">Admin View</a></li>
+		<li style="float: right"><a href="login.jsp"><strong>Logout</strong></a></li>
+	</ul>
 
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>User Id</th>
-					<th> Name </th>
-					<th>User Name</th>
-					<th>MailId</th>
-					<th>Mobile Number</th>
-					<th>User Password</th>
-				</tr>
-			</thead>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>User Id</th>
+				<th>Name</th>
+				<th>User Name</th>
+				<th>MailId</th>
+				<th>Mobile Number</th>
+				<th>User Password</th>
+			</tr>
+		</thead>
 
-			<tbody>
-			
-				<c:forEach items="${userList}" var="users">
+		<tbody>
+
+			<c:forEach items="${userList}" var="users">
 				<tr>
 					<td>${users.userId}</td>
 					<td>${users.name}</td>
@@ -42,11 +46,11 @@
 					<td>${users.userPassword}</td>
 
 				</tr>
-				</c:forEach>
-		
-			</tbody>
-		</table>
-	
+			</c:forEach>
+
+		</tbody>
+	</table>
+
 
 </body>
 </html>

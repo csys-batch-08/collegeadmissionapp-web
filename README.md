@@ -1,10 +1,9 @@
 # CollegeAdmissionApp-Web
 
 
-
 Objective
 
-Booking Ticket
+College Admission App
 
 
 Features
@@ -19,8 +18,6 @@ User can insert the ATM card details
 
 View All Users
 
-Delete Applications
-
 View All Applications
 
 Insert Courses
@@ -34,17 +31,15 @@ Update Application Status
 Admin
 1. View All Users
 
-2. Delete Applications
+2. View All Applications
 
-3. View All Applications
+3. Insert Courses
 
-4. Insert Courses
+4. Update Courses
 
-5. Update Courses
+5. View All Application Status
 
-6. View All Application Status
-
-7. Update Application Status
+6. Update Application Status
 
 User
 1.Registration

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.collegeadmission.impl.CoursesDaoImpl;
 import com.collegeadmission.model.CourseDetails;
@@ -46,6 +47,7 @@ public class InsertCoursesServlet extends HttpServlet {
 		doGet(request, response);
 
 		try {
+			HttpSession session = request.getSession();
 			int CourseId = Integer.parseInt(request.getParameter("courseId"));
 			String CourseType = request.getParameter("courseType");
 			String CourseName = request.getParameter("courseName");
@@ -55,6 +57,9 @@ public class InsertCoursesServlet extends HttpServlet {
 			CourseDetails obj = new CourseDetails(CourseId, CourseType, CourseName, AdmissionFees, TuitionFees);
 			CoursesDaoImpl ad = new CoursesDaoImpl();
 			ad.coursesDetails(obj);
+			session.setAttribute("courseid", CourseId);
+			
+			response.sendRedirect("adminView.jsp");
 
 			response.getWriter().print("Course Inserted Successfully");
 

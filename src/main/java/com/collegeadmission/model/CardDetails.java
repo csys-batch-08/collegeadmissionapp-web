@@ -4,57 +4,45 @@ import java.util.Objects;
 
 public class CardDetails {
 
-	private int user_id;
-	private int card_id;
-	private long card_number;
-	private int cvv_number;
-	private String cardholder_name;
-
-	public int getUser_id() {
-		return user_id;
+	private int userId;
+	private int cardId;
+	private long cardNumber;
+	private int cvvNumber;
+	private String cardHolderName;
+	public int getUserId() {
+		return userId;
 	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-
-	public int getCard_id() {
-		return card_id;
+	public int getCardId() {
+		return cardId;
 	}
-
-	public void setCard_id(int card_id) {
-		this.card_id = card_id;
+	public void setCardId(int cardId) {
+		this.cardId = cardId;
 	}
-
-	public long getCard_number() {
-		return card_number;
+	public long getCardNumber() {
+		return cardNumber;
 	}
-
-	public void setCard_number(long card_number) {
-		this.card_number = card_number;
+	public void setCardNumber(long cardNumber) {
+		this.cardNumber = cardNumber;
 	}
-
-	public int getCvv_number() {
-		return cvv_number;
+	public int getCvvNumber() {
+		return cvvNumber;
 	}
-
-	public void setCvv_number(int cvv_number) {
-		this.cvv_number = cvv_number;
+	public void setCvvNumber(int cvvNumber) {
+		this.cvvNumber = cvvNumber;
 	}
-
-	public String getCardholder_name() {
-		return cardholder_name;
+	public String getCardHolderName() {
+		return cardHolderName;
 	}
-
-	public void setCardholder_name(String cardholder_name) {
-		this.cardholder_name = cardholder_name;
+	public void setCardHolderName(String cardHolderName) {
+		this.cardHolderName = cardHolderName;
 	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(card_id, card_number, cardholder_name, cvv_number, user_id);
+		return Objects.hash(cardHolderName, cardId, cardNumber, cvvNumber, userId);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -64,37 +52,33 @@ public class CardDetails {
 		if (getClass() != obj.getClass())
 			return false;
 		CardDetails other = (CardDetails) obj;
-		return card_id == other.card_id && card_number == other.card_number
-				&& Objects.equals(cardholder_name, other.cardholder_name) && cvv_number == other.cvv_number
-				&& user_id == other.user_id;
+		return Objects.equals(cardHolderName, other.cardHolderName) && cardId == other.cardId
+				&& cardNumber == other.cardNumber && cvvNumber == other.cvvNumber && userId == other.userId;
 	}
-
 	@Override
 	public String toString() {
-		return "CardDetails [user_id=" + user_id + ", card_id=" + card_id + ", card_number=" + card_number
-				+ ", cvv_number=" + cvv_number + ", cardholder_name=" + cardholder_name + "]";
+		return "CardDetails [userId=" + userId + ", cardId=" + cardId + ", cardNumber=" + cardNumber + ", cvvNumber="
+				+ cvvNumber + ", cardHolderName=" + cardHolderName + "]";
 	}
-
-	public CardDetails(int user_id, int card_id, long card_number, int cvv_number, String cardholder_name) {
+	public CardDetails(int userId, int cardId, long cardNumber, int cvvNumber, String cardHolderName) {
 		super();
-		this.user_id = user_id;
-		this.card_id = card_id;
-		this.card_number = card_number;
-		this.cvv_number = cvv_number;
-		this.cardholder_name = cardholder_name;
+		this.userId = userId;
+		this.cardId = cardId;
+		this.cardNumber = cardNumber;
+		this.cvvNumber = cvvNumber;
+		this.cardHolderName = cardHolderName;
 	}
-
-	public CardDetails(int user_id, long card_number, int cvv_number, String cardholder_name) {
+	public CardDetails(int userId, long cardNumber, int cvvNumber, String cardHolderName) {
 		super();
-		this.user_id = user_id;
-		this.card_number = card_number;
-		this.cvv_number = cvv_number;
-		this.cardholder_name = cardholder_name;
+		this.userId = userId;
+		this.cardNumber = cardNumber;
+		this.cvvNumber = cvvNumber;
+		this.cardHolderName = cardHolderName;
 	}
-
 	public CardDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
 }

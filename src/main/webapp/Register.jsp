@@ -72,6 +72,16 @@ a {
 </style>
 </head>
 <body>
+
+	<ul>
+		<li><a href="register.jsp">Register</a></li>
+		<li><a href="userLogin.jsp">Login</a></li>
+		<li><a href="insertApplication.jsp">InsertApplication</a></li>
+		<li><a href="viewCourses.jsp">View Courses</a></li>
+		<li><a href="insertCardDetails.jsp">Insert Card Details</a></li>
+		<li style="float: right"><a href="login.jsp">Logout</a></li>
+	</ul>
+
 	<div class="container">
 
 		<h1>Register Form</h1>

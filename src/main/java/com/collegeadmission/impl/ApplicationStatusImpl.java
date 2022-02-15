@@ -21,13 +21,13 @@ public class ApplicationStatusImpl {
 		PreparedStatement stmt = con.prepareStatement(query);
 		// ApplicationDaoImpl appDao=new ApplicationDaoImpl();
 		stmt.setInt(1, appStatus.getUserId());
-		System.out.println(appStatus.getUserId());
+		//System.out.println(appStatus.getUserId());
 		// int appID = appDao.findAppId(appStatus.getUserId());
 
 		stmt.setInt(2, appStatus.getApplicationId());
-		System.out.println(appStatus.getApplicationId());
+		//System.out.println(appStatus.getApplicationId());
 		stmt.setInt(3, appStatus.getCourseId());
-		System.out.println(appStatus.getCourseId());
+		//System.out.println(appStatus.getCourseId());
 		stmt.setString(4, appStatus.getPaymentStatus());
 		stmt.setString(5, appStatus.getApplicationStatus());
 

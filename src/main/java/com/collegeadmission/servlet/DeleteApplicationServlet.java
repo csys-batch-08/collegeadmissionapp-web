@@ -50,14 +50,14 @@ public class DeleteApplicationServlet extends HttpServlet {
 			// int
 			// applicationId=Integer.parseInt(request.getParameter("applicationId").toString());
 			int appid = Integer.parseInt(request.getParameter("applicationId"));
-			System.out.println(appid);
+			//System.out.println(appid);
 			ApplicationDetails apid = new ApplicationDetails(appid);
 			ApplicationDaoImpl app = new ApplicationDaoImpl();
 
 			app.deleteApplication(appid);
 			HttpSession session = request.getSession();
 			session.setAttribute("deleteApplicationDetail", "Application deleted successfully");
-//				response.sendRedirect("ShowApplications.jsp");
+			response.sendRedirect("viewAllApplications.jsp");
 
 			response.getWriter().print("Deleted ");
 

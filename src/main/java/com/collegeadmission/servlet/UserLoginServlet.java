@@ -50,9 +50,9 @@ public class UserLoginServlet extends HttpServlet {
 
 				boolean flag = adminDao.loginAdmin(emailId, Password);
 				if (flag) {
-					response.sendRedirect("AdminViews.jsp");
+					response.sendRedirect("adminView.jsp");
 				} else {
-					request.getRequestDispatcher("UserLogin.jsp").forward(request, response);
+					request.getRequestDispatcher("login.jsp").forward(request, response);
 
 				}
 			}
@@ -65,7 +65,7 @@ public class UserLoginServlet extends HttpServlet {
 					session.setAttribute("UserId", userDetails.getUserId());
 					session.setAttribute("userDetails", userDetails);
 					response.getWriter().print("Login Suceessful");
-					response.sendRedirect("UserView.jsp");
+					response.sendRedirect("userView.jsp");
 				} else {
 					// response.sendRedirect("UserLoginError.jsp");
 					response.getWriter().print("Login Unsuceessful");

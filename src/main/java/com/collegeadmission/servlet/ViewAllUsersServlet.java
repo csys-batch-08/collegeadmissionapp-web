@@ -18,7 +18,7 @@ import com.collegeadmission.model.UserDetails;
 /**
  * Servlet implementation class ViewAllUsersServlet
  */
-@WebServlet("/ViewAllUsers")
+@WebServlet("/viewAllUsers")
 public class ViewAllUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class ViewAllUsersServlet extends HttpServlet {
 			userList = showUsers.showAllUsers();
 			request.setAttribute("userList", userList);
 			// System.out.println(userList);
-			RequestDispatcher rd = request.getRequestDispatcher("ViewAllUsers.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("viewAllUsers.jsp");
 			rd.forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -65,7 +65,7 @@ public class ViewAllUsersServlet extends HttpServlet {
 			userList = showUsers.showAllUsers();
 			request.setAttribute("userList", userList);
 			// System.out.println(userList);
-			RequestDispatcher rd = request.getRequestDispatcher("ViewAllUsers.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("viewAllUsers.jsp");
 			rd.forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

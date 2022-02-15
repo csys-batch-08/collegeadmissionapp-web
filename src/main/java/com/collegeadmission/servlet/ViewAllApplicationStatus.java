@@ -17,7 +17,7 @@ import com.collegeadmission.model.ApplicationStatus;
 /**
  * Servlet implementation class ViewAllApplicationStatus
  */
-@WebServlet("/ViewAllApplicationStatus")
+@WebServlet("/viewAllApplicationStatus")
 public class ViewAllApplicationStatus extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -41,7 +41,7 @@ public class ViewAllApplicationStatus extends HttpServlet {
 			List<ApplicationStatus> appstatus = appstat.showAppStatus();
 			HttpSession session = request.getSession();
 			session.setAttribute("applicationstatus", appstatus);
-			response.sendRedirect("ViewAllApplicationStatus.jsp");
+			response.sendRedirect("viewAllApplicationStatus.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

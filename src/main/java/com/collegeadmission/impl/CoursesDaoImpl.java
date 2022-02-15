@@ -45,7 +45,7 @@ public class CoursesDaoImpl implements CoursesInterface {
 		ps.setInt(3, coursedetails.getCourseId());
 
 		int result = ps.executeUpdate();
-		System.out.println(result + " is updated !!");
+		//System.out.println(result + " is updated !!");
 		ps.close();
 		con.close();
 
@@ -60,7 +60,7 @@ public class CoursesDaoImpl implements CoursesInterface {
 
 		ps.setInt(1, coursedetails.getCourseId());
 		int res = ps.executeUpdate();
-		System.out.println(res + "is deleted");
+		//System.out.println(res + "is deleted");
 		ps.close();
 		con.close();
 	}
@@ -93,5 +93,26 @@ public class CoursesDaoImpl implements CoursesInterface {
 		}
 		return courseList;
 	}
+	
+	public int updateCourse(CourseDetails coursedetails) throws ClassNotFoundException, SQLException {
+
+		String update = "update courses_details set admission_fees=?, tuition_fees=? where course_id=?";
+
+		Connection con = ConnectionUtil.getDBConnect();
+		PreparedStatement ps = con.prepareStatement(update);
+
+		ps.setInt(1, coursedetails.getAdmissionFees());
+		ps.setInt(2, coursedetails.getTuitionFees());
+		ps.setInt(3, coursedetails.getCourseId());
+
+		int result = ps.executeUpdate();
+		//System.out.println(result + " is updated !!");
+		System.out.println("The values ise  updateddddd"+result);
+		ps.close();
+		con.close();
+		return result;
+
+	}
+
 
 }

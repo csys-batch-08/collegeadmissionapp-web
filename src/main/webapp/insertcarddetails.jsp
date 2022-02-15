@@ -77,24 +77,32 @@ a {
 </style>
 </head>
 <body>
-	<div class="container">
 
+	<ul>
+		<li><a href="register.jsp">Register</a></li>
+		<li><a href="login.jsp">Login</a></li>
+		<li><a href="insertApplication.jsp">InsertApplication</a></li>
+		<li><a href="viewCourses.jsp">View Courses</a></li>
+		<li><a href="insertCardDetails.jsp">Insert Card Details</a></li>
+		<li style="float: right"><a href="login.jsp">Logout</a></li>
+	</ul>
+
+	<div class="container">
+${param.courseid}
 		<h1>ATM Card Details</h1>
 
-		<form action="InsertCardDetailsServlet" id="Payment" method="post">
+		<form action="InsertCardDetailsServlet?courseid=${param.courseid}" id="Payment" method="post">
 
 			<label for="Debit Card Number">Enter ATM Card Number</label> <input
 				type="number" name="cardNumber" placeholder="Card Number" required><br>
 			<br> <label for="CVV Number"> Enter CVV Number </label> <input
 				type="number" name="cvvNumber" placeholder="Cvv Number" required><br>
 			<br> <label for="Card Holder Name">Enter Card Holder
-				Name</label> <input type="text" name="cardholderName"
-				placeholder="Card Holder Name" required><br>
-			<br>
+				Name</label> <input type="text" name="cardHolderName"
+				placeholder="Card Holder Name" required><br> <br>
 
 			<button type="submit">Submit</button>
-			<br>
-			<br>
+			<br> <br>
 
 
 		</form>

@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.collegeadmission.impl.ApplicationDaoImpl;
+import com.collegeadmission.impl.CoursesDaoImpl;
 import com.collegeadmission.model.ApplicationDetails;
+import com.collegeadmission.model.CourseDetails;
 import com.collegeadmission.model.UserDetails;
 
 /**
@@ -53,10 +57,12 @@ public class InsertApplicationServlet extends HttpServlet {
 
 			HttpSession session = request.getSession();
 
-			int UserId = (int) session.getAttribute("UserId");
-			System.out.println(UserId);
+			//int UserId = (int) session.getAttribute("UserId");
+			//System.out.println(UserId);
 			String StudentName = request.getParameter("studentname").toLowerCase();
+
 			UserDetails userDetails = (UserDetails) session.getAttribute("userDetails");
+			//System.out.println(StudentName+"    "+userDetails.getName());
 			if (!userDetails.getName().equals(StudentName)) {
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("InsertApplication.jsp");
 				requestDispatcher.forward(request, response);
@@ -76,13 +82,19 @@ public class InsertApplicationServlet extends HttpServlet {
 				Date dt = null;
 				dt = sdf.parse(request.getParameter("dateofbirth"));
 				System.out.println(dt);
-				ApplicationDetails obj = new ApplicationDetails(UserId, StudentName, FatherName, dt, AadharNumber,
+				ApplicationDetails obj = new ApplicationDetails(userDetails.getUserId(),StudentName, FatherName, dt, AadharNumber,
 						SslcMark, HscMark, Address, City, Pincode, UserState, Nationality);
 				ApplicationDaoImpl ad = new ApplicationDaoImpl();
 				ad.insertApplication(obj);
 
 				session.setAttribute("application", obj);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("ViewCourses");
+
+				CoursesDaoImpl showCourses = new CoursesDaoImpl();
+				List<CourseDetails> courseList = new ArrayList<CourseDetails>();
+				
+					courseList = showCourses.showAllCourses();
+					request.setAttribute("courseList", courseList);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("viewCourses.jsp");
 				requestDispatcher.forward(request, response);
 
 				// response.getWriter().print("Register Successful");

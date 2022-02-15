@@ -17,10 +17,10 @@ public class CardDetailsDaoImpl {
 
 		PreparedStatement pstmt = con.prepareStatement(courseQuery);
 
-		pstmt.setInt(1, card.getUser_id());
-		pstmt.setLong(2, card.getCard_number());
-		pstmt.setInt(3, card.getCvv_number());
-		pstmt.setString(4, card.getCardholder_name());
+		pstmt.setInt(1, card.getUserId());
+		pstmt.setLong(2, card.getCardNumber());
+		pstmt.setInt(3, card.getCvvNumber());
+		pstmt.setString(4, card.getCardHolderName());
 
 		int result = pstmt.executeUpdate();
 		// System.out.println("Course Selected Successfully");

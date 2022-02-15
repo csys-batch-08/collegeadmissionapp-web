@@ -46,6 +46,7 @@ public class InsertApplicationStatusServlet extends HttpServlet {
 //						
 //			ApplicationStatus obj = new ApplicationStatus(StatusId,UserId,ApplicationId,CourseId,PaymentStatus,ApplicationStatus);
 			HttpSession session = request.getSession();
+			System.out.println("InsertApplicationServlet");
 			ApplicationDetails appObj = (ApplicationDetails) session.getAttribute("application");
 			int courseid = (int) session.getAttribute("courseid");
 			ApplicationStatusImpl ad = new ApplicationStatusImpl();
@@ -56,7 +57,7 @@ public class InsertApplicationStatusServlet extends HttpServlet {
 			ad.applicationStatus(appStatus);
 			session.setAttribute("ApplicationStatus", appStatus);
 			session.setAttribute("appStatusList", ad.showUserAppStatus(appObj.getUserId()));
-			response.sendRedirect("InsertApplicationStatus.jsp");
+			response.sendRedirect("viewApplicationStatus.jsp");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

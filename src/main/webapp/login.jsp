@@ -5,6 +5,15 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
+body {
+	background-image:
+		url("https://d2jyir0m79gs60.cloudfront.net/news/images/successful-college-student-lg.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: white;
+}
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -146,7 +155,7 @@ to {
 
 	<button onclick="document.getElementById('id01').style.display='block'"
 		style="width: auto;">Login</button>
-	<a href="Register.jsp"> Register </a>
+	<a href="register.jsp"> Register </a>
 	<div id="id01" class="modal">
 
 		<form class="modal-content animate" action="UserLoginServlet"

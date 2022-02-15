@@ -32,41 +32,46 @@ form {
 </style>
 </head>
 <body>
+
+	<ul>
+		<li><a href="register.jsp">Register</a></li>
+		<li><a href="login.jsp">Login</a></li>
+		<li><a href="insertApplication.jsp">InsertApplication</a></li>
+		<li><a href="viewCourses">View Courses</a></li>
+		<li><a href="insertCardDetails.jsp">Insert Card Details</a></li>
+		<li style="float: right"><a href="login.jsp">Logout</a></li>
+	</ul>
+
 	<form action="InsertApplicationServlet" method="post">
 		<h1>Application Details</h1>
 
 		<input type="text" name="studentname" placeholder="Student Name"
-			pattern="[A-Za-z.,]{3,30}" required><br>
-		<br> <input type="text" name="fathername"
-			placeholder="Father Name" pattern="[A-Za-z., ]{3,30}" required><br>
-		<br> <input type="date" name="dateofbirth" id="dob"
-			placeholder="DateofBirth" pattern="" required><br>
-		<br> <input type="number" name="aadharnumber"
-			placeholder="Aadhar Number" pattern="[0-9] {12}" required><br>
-		<br> <input type="number" name="sslcMark" placeholder="Sslc Mark"
-			pattern="[0-4] {1} [0-9]{2}" required> <input type="file"
-			name="sslcMarkimage" placeholder="Sslc Mark"
-			pattern="[0-4] {1} [0-9]{2}" required> <br>
-		<br> <input type="number" name="hscMark" placeholder="Hsc Mark"
-			pattern="[0-1] {2}[0-9]{2}" required> <input type="file"
-			name="sslcMarkimage" placeholder="Sslc Mark"
-			pattern="[0-4] {1} [0-9]{2}" required> <br>
-		<br> <input type="text" name="address" placeholder="Address"
-			required><br>
+			pattern="[A-Za-z.,]{3,30}" required><br> <br> <input
+			type="text" name="fathername" placeholder="Father Name"
+			pattern="[A-Za-z., ]{3,30}" required><br> <br> <input
+			type="date" name="dateofbirth" id="dob" placeholder="DateofBirth"
+			pattern="" required><br> <br> <input type="number"
+			name="aadharnumber" placeholder="Aadhar Number" pattern="[0-9] {12}"
+			required><br> <br> <input type="number"
+			name="sslcMark" placeholder="SSLC Mark" pattern="[0-4] {1} [0-9]{2}"
+			required> <input type="file" name="sslcMarkimage"
+			placeholder="Insert your SSLC Marksheet" pattern="[0-4] {1} [0-9]{2}"
+			required> <br> <br> <input type="number"
+			name="hscMark" placeholder="HSC Mark" pattern="[0-1] {2}[0-9]{2}"
+			required> <input type="file" name="sslcMarkimage"
+			placeholder="Insert your HSC Marksheetft"
+			pattern="[0-4] {1} [0-9]{2}" required> <br> <br> <input
+			type="text" name="address" placeholder="Address" required><br>
 		<br> <input type="text" name="city" placeholder="City" required><br>
 		<br> <input type="number" name="pincode" placeholder="Pincode"
-			pattern="[0-9] {6}" required><br>
-		<br> <input type="text" name="userstate" placeholder="State"
-			required><br>
+			pattern="[0-9] {6}" required><br> <br> <input
+			type="text" name="userstate" placeholder="State" required><br>
 		<br> <input type="text" name="nationality"
-			placeholder="Nationality" required><br>
-		<br>
+			placeholder="Nationality" required><br> <br>
 
 		<button type="submit">Submit</button>
 		<button type="reset">Reset</button>
-		<br>
-		<br> <br>
-		<br>
+		<br> <br> <br> <br>
 	</form>
 	<script>
 		today();

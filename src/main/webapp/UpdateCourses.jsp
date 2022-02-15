@@ -48,6 +48,11 @@ body {
 </head>
 <body>
 
+	<ul>
+		<li><a href="adminView.jsp">Admin View</a></li>
+		<li style="float: right"><a href="login.jsp"><strong>Logout</strong></a></li>
+	</ul>
+
 	<div class="updateform">
 		<h2>Update Courses</h2>
 

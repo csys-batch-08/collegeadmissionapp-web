@@ -18,7 +18,7 @@ import com.collegeadmission.model.*;
 /**
  * Servlet implementation class ViewAllCoursesServlet
  */
-@WebServlet("/ViewCourses")
+@WebServlet("/viewCourses")
 public class ViewAllCoursesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,8 +42,8 @@ public class ViewAllCoursesServlet extends HttpServlet {
 		try {
 			courseList = showCourses.showAllCourses();
 			request.setAttribute("courseList", courseList);
-			System.out.println(courseList);
-			RequestDispatcher rd = request.getRequestDispatcher("ViewCourses.jsp");
+			//System.out.println(courseList);
+			RequestDispatcher rd = request.getRequestDispatcher("viewCourses.jsp");
 			rd.forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -64,8 +64,8 @@ public class ViewAllCoursesServlet extends HttpServlet {
 		try {
 			courseList = showCourses.showAllCourses();
 			request.setAttribute("courseList", courseList);
-			System.out.println(courseList);
-			RequestDispatcher rd = request.getRequestDispatcher("ViewCourses.jsp");
+			//System.out.println(courseList);
+			RequestDispatcher rd = request.getRequestDispatcher("viewCourses.jsp");
 			rd.forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

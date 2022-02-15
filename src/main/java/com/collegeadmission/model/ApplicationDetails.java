@@ -183,11 +183,12 @@ public class ApplicationDetails {
 		this.applicationId = applicationId;
 	}
 
-	public ApplicationDetails(int userId, String studentName, String fatherName, Date dt, long aadharNumber,
+	public ApplicationDetails(int userid,String studentName, String fatherName, Date dt, long aadharNumber,
 			int sslcMark, int hscMark, String address, String city, int pincode, String userState, String nationality) {
 		// TODO Auto-generated constructor stub
 
-		this.userId = userId;
+		this.userId=userid;
+		
 		this.studentName = studentName;
 		this.fatherName = fatherName;
 		this.dateofBirth = dt;

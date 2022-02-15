@@ -31,7 +31,6 @@ public class UserDaoImpl {
 		pstmt.setString(5, str.getUserPassword());
 
 		pstmt.executeUpdate();
-		System.out.println("Register User successfully");
 	}
 
 	public ResultSet getEmailDetails(UserDetails rp) throws SQLException, ClassNotFoundException {

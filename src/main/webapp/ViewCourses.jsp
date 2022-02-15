@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>View</title>
+<title>View Courses</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -56,10 +56,12 @@ li a:hover:not(.active) {
 <body>
 
 	<ul>
-		<li><a href="#home">Home</a></li>
-		<li><a href="#news">News</a></li>
-		<li><a href="#contact">view users</a></li>
-		<li style="float: right"><a href="UserLogin.jsp">logout</a></li>
+		<li><a href="register.jsp">Register</a></li>
+		<li><a href="login.jsp">Login</a></li>
+		<li><a href="insertApplication.jsp">InsertApplication</a></li>
+		<li><a href="viewCourses">View Courses</a></li>
+		<li><a href="insertCardDetails.jsp">Insert Card Details</a></li>
+		<li style="float: right"><a href="login.jsp">Logout</a></li>
 	</ul>
 
 	<table class="table table-striped">
@@ -84,7 +86,7 @@ li a:hover:not(.active) {
 					<td>${course.admissionFees}</td>
 					<td>${course.tuitionFees}</td>
 					<td><a
-						href="insertcarddetails.jsp?courseid=${course.courseId }">Apply</a></td>
+						href="insertCardDetails.jsp?courseid=${course.courseId }">Apply</a></td>
 				</tr>
 			</c:forEach>
 
