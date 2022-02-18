@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Login </title>
 <style>
 
 body {
@@ -172,7 +173,7 @@ to {
 					type="email" placeholder="Enter the email" name="email"
 					pattern="[a-z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
 
-				<label for="psw"><b>Password</b></label> <input type="password"
+				<label for="psw"><Strong>Password</Strong></label> <input type="password"
 					placeholder="Enter Password" name="password" min=8 required>
 
 				<button type="submit">Login</button>

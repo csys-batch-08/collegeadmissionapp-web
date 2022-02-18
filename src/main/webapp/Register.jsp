@@ -3,8 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-<title>Registration</title>
 <head>
+<title>Registration</title>
 <style>
 body {
 	font-family: Arial, Helvetica, sans-serif;
