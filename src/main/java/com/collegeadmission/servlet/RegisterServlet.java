@@ -1,7 +1,7 @@
 package com.collegeadmission.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -52,7 +52,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		try {
 		String name = request.getParameter("name");
@@ -90,13 +90,13 @@ public class RegisterServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		catch (EmailAlreadyExistException e) {
-			response.getWriter().println("<script type=\"text/javascript\">");
-			response.getWriter().println("alert('email already exist');");
-			response.getWriter().println("location='Register.jsp';");
-			response.getWriter().println("</script>");
-			// res.sendRedirect("errorpage.jsp?message="+ea.getMessage()+"&url=Register.jsp");
-		}
+//		catch (EmailAlreadyExistException e) {
+//			response.getWriter().println("<script type=\"text/javascript\">");
+//			response.getWriter().println("alert('email already exist');");
+//			response.getWriter().println("location='Register.jsp';");
+//			response.getWriter().println("</script>");
+//			// res.sendRedirect("errorpage.jsp?message="+ea.getMessage()+"&url=Register.jsp");
+//		}
 		catch(Exception e) {
 			e.getMessage();
 		}
