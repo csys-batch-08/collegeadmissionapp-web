@@ -88,10 +88,10 @@ a {
 	</ul>
 
 	<div class="container">
-${param.courseid}
+
 		<h1>ATM Card Details</h1>
 
-		<form action="InsertCardDetailsServlet?courseid=${param.courseid}" id="Payment" method="post">
+		<form action="InsertCardDetailsServlet" id="Payment" method="post">
 
 			<label for="Debit Card Number">Enter ATM Card Number</label> <input
 				type="number" name="cardNumber" placeholder="Card Number" required><br>
