@@ -7,10 +7,10 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title> View All Application Status </title>
 </head>
 <body>
 

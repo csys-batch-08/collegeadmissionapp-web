@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
 <title>User View</title>
@@ -62,7 +62,7 @@ s
 		<li><a href="register.jsp">Register</a></li>
 		<li><a href="login.jsp">Login</a></li>
 		<li><a href="insertApplication.jsp">InsertApplication</a></li>
-		<li><a href="viewCourses.jsp">View Courses</a></li>
+		<li><a href="viewCourses">View Courses</a></li>
 		<li><a href="insertCardDetails.jsp">Insert Card Details</a></li>
 		<li style="float: right"><a href="login.jsp">Logout</a></li>
 	</ul>
@@ -75,7 +75,7 @@ s
 
 
 	<h2 align="center">
-		View Courses : <a href="viewCourses.jsp"><button type="button"
+		View Courses : <a href="viewCourses"><button type="button"
 				class="btn btn-success">View</button></a>
 	</h2>
 

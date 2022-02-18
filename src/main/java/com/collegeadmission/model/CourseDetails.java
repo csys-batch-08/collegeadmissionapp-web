@@ -1,8 +1,9 @@
 package com.collegeadmission.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class CourseDetails {
+public class CourseDetails implements Serializable {
 
 	private int courseId;
 	private String courseType;

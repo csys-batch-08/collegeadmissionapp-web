@@ -43,7 +43,7 @@ public class ViewAllApplicants extends HttpServlet {
 			applicationList = showApplications.showAllApplications();
 			request.setAttribute("applicationList", applicationList);
 			//System.out.println(applicationList);
-			RequestDispatcher rd = request.getRequestDispatcher("ViewAllApplicants.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("viewAllApplications.jsp");
 			rd.forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

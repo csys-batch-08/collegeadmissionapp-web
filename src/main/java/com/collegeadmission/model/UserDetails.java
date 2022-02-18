@@ -1,8 +1,9 @@
 package com.collegeadmission.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class UserDetails {
+public class UserDetails implements Serializable {
 
 	private int userId;
 	private String name;

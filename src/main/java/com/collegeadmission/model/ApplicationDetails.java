@@ -1,9 +1,10 @@
 package com.collegeadmission.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class ApplicationDetails {
+public class ApplicationDetails implements Serializable {
 
 	private int applicationId;
 	private int userId;

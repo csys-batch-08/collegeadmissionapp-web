@@ -46,9 +46,9 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
-		//System.out.println("cnvccvc" + email);
+		
 		String Password = request.getParameter("adminpassword");
-		//System.out.println("snvdfcgscdcghcdgdccd");
+		
 
 		AdminDaoImpl cpDao = new AdminDaoImpl();
 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert Card Details</title>
@@ -82,7 +82,7 @@ a {
 		<li><a href="register.jsp">Register</a></li>
 		<li><a href="login.jsp">Login</a></li>
 		<li><a href="insertApplication.jsp">InsertApplication</a></li>
-		<li><a href="viewCourses.jsp">View Courses</a></li>
+		<li><a href="viewCourses">View Courses</a></li>
 		<li><a href="insertCardDetails.jsp">Insert Card Details</a></li>
 		<li style="float: right"><a href="login.jsp">Logout</a></li>
 	</ul>

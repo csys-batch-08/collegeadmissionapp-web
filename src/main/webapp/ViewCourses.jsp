@@ -7,7 +7,7 @@
 <%@page import="com.collegeadmission.impl.*"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>View Courses</title>

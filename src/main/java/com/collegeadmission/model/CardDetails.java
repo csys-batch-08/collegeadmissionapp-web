@@ -1,8 +1,9 @@
 package com.collegeadmission.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class CardDetails {
+public class CardDetails implements Serializable {
 
 	private int userId;
 	private int cardId;
