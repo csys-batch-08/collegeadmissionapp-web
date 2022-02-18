@@ -54,6 +54,7 @@ public class RegisterServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
+		try {
 		String name = request.getParameter("name");
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
@@ -62,7 +63,7 @@ public class RegisterServlet extends HttpServlet {
 
 		UserDetails obj = new UserDetails(name, username, email, mobileno, password);
 		UserDaoImpl ins = new UserDaoImpl();
-		try {
+		
 
 			ResultSet rs = ins.getEmailDetails(obj);
 			if (rs.next()) {
@@ -90,11 +91,14 @@ public class RegisterServlet extends HttpServlet {
 		}
 
 		catch (EmailAlreadyExistException e) {
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('email already exist');");
-			out.println("location='Register.jsp';");
-			out.println("</script>");
+			response.getWriter().println("<script type=\"text/javascript\">");
+			response.getWriter().println("alert('email already exist');");
+			response.getWriter().println("location='Register.jsp';");
+			response.getWriter().println("</script>");
 			// res.sendRedirect("errorpage.jsp?message="+ea.getMessage()+"&url=Register.jsp");
+		}
+		catch(Exception e) {
+			e.getMessage();
 		}
 
 	}

@@ -46,7 +46,9 @@ public class InsertCardDetailsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		HttpSession session = request.getSession();
+		try {
 		int userId = (int) session.getAttribute("UserId");
 		 int courseId = Integer.parseInt(request.getParameter("courseid")); 
 		long cardNumber = Long.parseLong(request.getParameter("cardNumber"));
@@ -55,7 +57,7 @@ public class InsertCardDetailsServlet extends HttpServlet {
 
 		CardDetails card = new CardDetails(userId, cardNumber, cvvNumber, cardHolderName);
 		CardDetailsDaoImpl cardDao = new CardDetailsDaoImpl();
-		try {
+		
 			cardDao.insertCardDetails(card);
 			session.setAttribute("courseid", courseId); 
 			RequestDispatcher rd = request.getRequestDispatcher("InsertApplicationStatusServlet");
@@ -64,9 +66,19 @@ public class InsertCardDetailsServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		catch(Exception e) {
+		e.getMessage();
+		}	
+			
+			
+			
+			
+			
+			
+		}
 
 		//doGet(request, response);
 
 	}
 
-}
+
