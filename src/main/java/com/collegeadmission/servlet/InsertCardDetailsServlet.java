@@ -36,7 +36,7 @@ public class InsertCardDetailsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class InsertCardDetailsServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		doGet(request, response);
+		//doGet(request, response);
 
 	}
 
