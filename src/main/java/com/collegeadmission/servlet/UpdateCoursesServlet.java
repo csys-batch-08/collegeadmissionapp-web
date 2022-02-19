@@ -56,8 +56,9 @@ public class UpdateCoursesServlet extends HttpServlet {
 //			obj.updateCourses(ad);
 //			response.sendRedirect("AdminViews.jsp");
 			
-			int updateDetails = obj.updateCourse(ad);
-			System.out.println(updateDetails);		
+			obj.updateCourse(ad);
+			int updateDetails = 0;
+			//System.out.println(updateDetails);		
 			if(updateDetails != 0)	{						
 				session.setAttribute("valid","Course Updated");
 			response.sendRedirect("adminView.jsp?sucess=1");

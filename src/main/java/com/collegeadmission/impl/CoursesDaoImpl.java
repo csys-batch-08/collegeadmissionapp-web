@@ -14,12 +14,17 @@ import com.collegeadmission.model.CourseDetails;
 public class CoursesDaoImpl implements CoursesInterface {
 
 	public void coursesDetails(CourseDetails courseDetails) throws ClassNotFoundException, SQLException {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
 
 		String courseQuery = "insert into courses_details(Course_Id,Course_Type,Course_Name,Admission_Fees,Tuition_Fees) values(?,?,?,?,?)";
 
-		Connection con = ConnectionUtil.getDBConnect();
+		 con = ConnectionUtil.getDBConnect();
 
-		PreparedStatement pstmt = con.prepareStatement(courseQuery);
+		 pstmt = con.prepareStatement(courseQuery);
 
 		pstmt.setInt(1, courseDetails.getCourseId());
 		pstmt.setString(2, courseDetails.getCourseType());
@@ -27,90 +32,106 @@ public class CoursesDaoImpl implements CoursesInterface {
 		pstmt.setInt(4, courseDetails.getAdmissionFees());
 		pstmt.setInt(5, courseDetails.getTuitionFees());
 
-		int result = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 		// System.out.println("Course Selected Successfully");
-		pstmt.close();
-		con.close();
-	}
+		//pstmt.close();
+		//con.close();
+	
+}
 
-	public void updateCourses(CourseDetails coursedetails) throws ClassNotFoundException, SQLException {
+		catch (Exception e) {
+			e.getMessage();
+		} finally {
+			ConnectionUtil.close(pstmt, con);
+		}
+}
 
-		String update = "update courses_details set admission_fees=?, tuition_fees=? where course_id=?";
+//	public void updateCourses(CourseDetails coursedetails) throws ClassNotFoundException, SQLException {
+//
+//		String update = "update courses_details set admission_fees=?, tuition_fees=? where course_id=?";
+//
+//		Connection con = ConnectionUtil.getDBConnect();
+//		PreparedStatement ps = con.prepareStatement(update);
+//
+//		ps.setInt(1, coursedetails.getAdmissionFees());
+//		ps.setInt(2, coursedetails.getTuitionFees());
+//		ps.setInt(3, coursedetails.getCourseId());
+//
+//		int result = ps.executeUpdate();
+//		//System.out.println(result + " is updated !!");
+//		ps.close();
+//		con.close();
+//
+//	}
 
-		Connection con = ConnectionUtil.getDBConnect();
-		PreparedStatement ps = con.prepareStatement(update);
-
-		ps.setInt(1, coursedetails.getAdmissionFees());
-		ps.setInt(2, coursedetails.getTuitionFees());
-		ps.setInt(3, coursedetails.getCourseId());
-
-		int result = ps.executeUpdate();
-		//System.out.println(result + " is updated !!");
-		ps.close();
-		con.close();
-
-	}
-
-	public void deleteCourses(CourseDetails coursedetails) throws ClassNotFoundException, SQLException {
-
-		String del = "delete from courses_details where course_id=?";
-
-		Connection con = ConnectionUtil.getDBConnect();
-		PreparedStatement ps = con.prepareStatement(del);
-
-		ps.setInt(1, coursedetails.getCourseId());
-		int res = ps.executeUpdate();
-		//System.out.println(res + "is deleted");
-		ps.close();
-		con.close();
-	}
+//	public void deleteCourses(CourseDetails coursedetails) throws ClassNotFoundException, SQLException {
+//
+//		String del = "delete from courses_details where course_id=?";
+//
+//		Connection con = ConnectionUtil.getDBConnect();
+//		PreparedStatement ps = con.prepareStatement(del);
+//
+//		ps.setInt(1, coursedetails.getCourseId());
+//		ps.executeUpdate();
+//		//System.out.println(res + "is deleted");
+//		ps.close();
+//		con.close();
+//	}
 
 	public List<CourseDetails> showAllCourses() throws ClassNotFoundException, SQLException {
 		List<CourseDetails> courseList = new ArrayList<CourseDetails>();
 		String showcoursesquery = "select * from courses_details";
 		Connection con = null;
-		PreparedStatement ps;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ConnectionUtil.getDBConnect();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			ps = con.prepareStatement(showcoursesquery);
-			ResultSet rs = ps.executeQuery();
+		
+			pstmt = con.prepareStatement(showcoursesquery);
+		    rs = pstmt.executeQuery();
 			while (rs.next()) {
 				CourseDetails coursedetails = new CourseDetails(rs.getInt(1), rs.getString(2), rs.getString(3),
 						rs.getInt(4), rs.getInt(5));
 				courseList.add(coursedetails);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		ConnectionUtil.close(rs,pstmt, con);
+	}
 		return courseList;
 	}
 	
-	public int updateCourse(CourseDetails coursedetails) throws ClassNotFoundException, SQLException {
+	public void updateCourse(CourseDetails coursedetails) throws ClassNotFoundException, SQLException {
 
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+		
 		String update = "update courses_details set admission_fees=?, tuition_fees=? where course_id=?";
 
-		Connection con = ConnectionUtil.getDBConnect();
-		PreparedStatement ps = con.prepareStatement(update);
+		con = ConnectionUtil.getDBConnect();
+		pstmt = con.prepareStatement(update);
 
-		ps.setInt(1, coursedetails.getAdmissionFees());
-		ps.setInt(2, coursedetails.getTuitionFees());
-		ps.setInt(3, coursedetails.getCourseId());
+		pstmt.setInt(1, coursedetails.getAdmissionFees());
+		pstmt.setInt(2, coursedetails.getTuitionFees());
+		pstmt.setInt(3, coursedetails.getCourseId());
 
-		int result = ps.executeUpdate();
-		//System.out.println(result + " is updated !!");
-		System.out.println("The values ise  updateddddd"+result);
-		ps.close();
-		con.close();
-		return result;
+		pstmt.executeUpdate();
+		}
+
+		catch (Exception e) {
+			e.getMessage();
+		} finally {
+			ConnectionUtil.close(pstmt, con);
+		}
+		
 
 	}
 
