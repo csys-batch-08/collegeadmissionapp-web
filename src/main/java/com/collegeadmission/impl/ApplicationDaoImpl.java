@@ -66,7 +66,7 @@ public class ApplicationDaoImpl {
 
 	}
 
-	public List<ApplicationDetails> showAllApplications() throws ClassNotFoundException, SQLException {
+	public List<ApplicationDetails> showAllApplications() throws ClassNotFoundException, SQLException, NullPointerException {
 		List<ApplicationDetails> applicationList = new ArrayList<ApplicationDetails>();
 		String showapplicationsquery = "select * from application_details";
 		Connection con = null;
@@ -76,7 +76,7 @@ public class ApplicationDaoImpl {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -100,13 +100,16 @@ public class ApplicationDaoImpl {
 	public int findAppId(ApplicationDetails application) {
 		String query = "select application_id from application_details where student_name=? and father_name=?";
 		int result = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
 
 		try {
-			Connection con = ConnectionUtil.getDBConnect();
-			PreparedStatement preStmt = con.prepareStatement(query);
-			preStmt.setString(1, application.getStudentName());
-			preStmt.setString(2, application.getFatherName());
-			ResultSet rs = preStmt.executeQuery();
+			con = ConnectionUtil.getDBConnect();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, application.getStudentName());
+			pstmt.setString(2, application.getFatherName());
+			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = rs.getInt(1);
 			}
@@ -115,7 +118,13 @@ public class ApplicationDaoImpl {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.getMessage();
-		} finally {
+		} 
+		
+		finally {
+			
+		
+		
+		ConnectionUtil.close(pstmt, con);	
 
 		}
 
