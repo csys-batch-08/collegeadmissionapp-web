@@ -18,7 +18,17 @@ public class ConnectionUtil {
 	}
 
 	public static void close(PreparedStatement pstmt, Connection con) {
-		// TODO Auto-generated method stub
+		
+		try {
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
 		
 	}
 }
