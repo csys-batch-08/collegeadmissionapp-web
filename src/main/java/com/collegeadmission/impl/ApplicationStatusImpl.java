@@ -46,7 +46,7 @@ public class ApplicationStatusImpl {
 		
 	}
 
-	public void updateApplicationStatus(ApplicationStatus as1) throws ClassNotFoundException, SQLException {
+	public void updateApplicationStatus(ApplicationStatus as1) throws ClassNotFoundException, SQLException, NullPointerException {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -69,7 +69,7 @@ public class ApplicationStatusImpl {
 		ConnectionUtil.close(pstmt, con);
 	}
 
-		System.out.println(pstmt.executeUpdate() + " is updated !!");
+		//System.out.println(pstmt.executeUpdate() + " is updated !!");
 
 	}
 
