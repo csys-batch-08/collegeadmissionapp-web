@@ -70,29 +70,31 @@ public class ApplicationDaoImpl {
 		List<ApplicationDetails> applicationList = new ArrayList<ApplicationDetails>();
 		String showapplicationsquery = "select * from application_details";
 		Connection con = null;
-		PreparedStatement ps;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
 		try {
 			con = ConnectionUtil.getDBConnect();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			ps = con.prepareStatement(showapplicationsquery);
-			ResultSet rs = ps.executeQuery();
+		
+		
+			pstmt = con.prepareStatement(showapplicationsquery);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ApplicationDetails applicationdetails = new ApplicationDetails(rs.getInt(1), rs.getInt(2),
 						rs.getString(3), rs.getString(4), rs.getDate(5), rs.getInt(6), rs.getInt(7), rs.getInt(8),
 						rs.getString(9), rs.getString(10), rs.getInt(11), rs.getString(12), rs.getString(13));
 				applicationList.add(applicationdetails);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		 } catch (ClassNotFoundException e) {
+			
 			e.printStackTrace();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs,pstmt, con);
 		}
+		
 		return applicationList;
 
 	}
