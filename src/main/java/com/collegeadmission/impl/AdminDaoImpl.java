@@ -42,7 +42,7 @@ public class AdminDaoImpl {
 
 			stmt = con.prepareStatement(loginQuery);
 
-			System.out.println("Registered ");
+			//System.out.println("Registered ");
 
 			stmt.setString(1, Email);
 			stmt.setString(2, AdminPassword);

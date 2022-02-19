@@ -16,9 +16,12 @@ public class ApplicationDaoImpl {
 
 	public void insertApplication(ApplicationDetails applicationdetails) throws ClassNotFoundException, SQLException {
 
-		String formQuery = "insert into application_details(user_id,Student_Name,Father_Name,Date_of_Birth,Aadhar_Number,SSLC_Mark,HSC_Mark,Address,City,Pincode,User_State,Nationality) values(?,?,?,?,?,?,?,?,?,?,?,?)";
-
 		Connection con = ConnectionUtil.getDBConnect();
+		
+		try {
+			
+		
+		String formQuery = "insert into application_details(user_id,Student_Name,Father_Name,Date_of_Birth,Aadhar_Number,SSLC_Mark,HSC_Mark,Address,City,Pincode,User_State,Nationality) values(?,?,?,?,?,?,?,?,?,?,?,?)";		
 
 		PreparedStatement pstmt = con.prepareStatement(formQuery);
 
@@ -40,6 +43,14 @@ public class ApplicationDaoImpl {
 		// System.out.println("Registered Successfully");
 		pstmt.close();
 		con.close();
+		}
+		
+		 catch (SQLException e) {
+				e.getMessage();
+			} 	finally {
+				
+			}
+		
 
 	}
 
