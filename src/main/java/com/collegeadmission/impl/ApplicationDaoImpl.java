@@ -16,61 +16,75 @@ public class ApplicationDaoImpl {
 
 	public void insertApplication(ApplicationDetails applicationdetails) throws ClassNotFoundException, SQLException {
 
-		Connection con = ConnectionUtil.getDBConnect();
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		
 		try {
 			
-		
 		String formQuery = "insert into application_details(user_id,Student_Name,Father_Name,Date_of_Birth,Aadhar_Number,SSLC_Mark,HSC_Mark,Address,City,Pincode,User_State,Nationality) values(?,?,?,?,?,?,?,?,?,?,?,?)";		
 
-		PreparedStatement pstmt = con.prepareStatement(formQuery);
-
+		 con = ConnectionUtil.getDBConnect();
+		
+		pstmt = con.prepareStatement(formQuery);
+		
 		pstmt.setInt(1, applicationdetails.getUserId());
+		
 		pstmt.setString(2, applicationdetails.getStudentName());
+		
 		pstmt.setString(3, applicationdetails.getFatherName());
+		
 		//System.out.println(applicationdetails.getDateofBirth());
 		pstmt.setDate(4, new java.sql.Date(applicationdetails.getDateofBirth().getTime()));
+		
 		pstmt.setLong(5, applicationdetails.getAadharNumber());
+		
 		pstmt.setInt(6, applicationdetails.getSslcMark());
+		
 		pstmt.setInt(7, applicationdetails.getHscMark());
+		
 		pstmt.setString(8, applicationdetails.getAddress());
+		
 		pstmt.setString(9, applicationdetails.getCity());
+		
 		pstmt.setInt(10, applicationdetails.getPincode());
+		
 		pstmt.setString(11, applicationdetails.getUserState());
+		
 		pstmt.setString(12, applicationdetails.getNationality());
 
-		int result = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 		// System.out.println("Registered Successfully");
-		pstmt.close();
-		con.close();
+		//pstmt.close();
+		//con.close();
 		}
 		
-		 catch (SQLException e) {
+		 catch (Exception e) {
 				e.getMessage();
-			} 	finally {
-				
+			} 	
+		finally {
+				ConnectionUtil.close(pstmt,con);
 			}
 		
 
 	}
 
-	public void deleteApplication(int appid) throws ClassNotFoundException, SQLException {
-
-		String del = "delete from application_details where application_id = ?";
-
-		Connection con = ConnectionUtil.getDBConnect();
-		PreparedStatement ps = con.prepareStatement(del);
-
-		ps.setInt(1, appid);
-		int res = ps.executeUpdate();
-		if (res > 0) {
-			System.out.println(res + "is deleted");
-		} else {
-			System.out.println("no row deleted");
-		}
-		ps.close();
-		con.close();
-	}
+//	public void deleteApplication(int appid) throws ClassNotFoundException, SQLException {
+//
+//		String del = "delete from application_details where application_id = ?";
+//
+//		Connection con = ConnectionUtil.getDBConnect();
+//		PreparedStatement ps = con.prepareStatement(del);
+//
+//		ps.setInt(1, appid);
+//		int res = ps.executeUpdate();
+//		if (res > 0) {
+//			System.out.println(res + "is deleted");
+//		} else {
+//			System.out.println("no row deleted");
+//		}
+//		ps.close();
+//		con.close();
+//	}
 
 	public List<ApplicationDetails> showAllApplications() throws ClassNotFoundException, SQLException {
 		List<ApplicationDetails> applicationList = new ArrayList<ApplicationDetails>();
@@ -119,7 +133,10 @@ public class ApplicationDaoImpl {
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
+		} catch(Exception e) {
+			e.getMessage();
+		}
+		finally {
 			
 		}
 

@@ -2,6 +2,7 @@ package com.collegeadmission.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
@@ -14,5 +15,10 @@ public class ConnectionUtil {
 
 		return con;
 
+	}
+
+	public static void close(PreparedStatement pstmt, Connection con) {
+		// TODO Auto-generated method stub
+		
 	}
 }
